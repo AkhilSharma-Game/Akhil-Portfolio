@@ -775,7 +775,8 @@
         }
 
         .project-body ul.outcomes li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            line-height: 1.55;
         }
 
         @media (max-width:700px) {
@@ -1025,15 +1026,15 @@
                             <div class="project-meta">
                                 <span class="tagpill">Unity 2D</span>
                                 <span class="tagpill">C#</span>
-                                <span class="tagpill">Unity Tilemaps</span>
-                                <span class="tagpill">Rule Tiles</span>
-                                <span class="tagpill">Cinemachine</span>
-                                <span class="tagpill">State Machines</span>
+                                <span class="tagpill">Level Design</span>
+                                <span class="tagpill">Movement Tuning</span>
+                                <span class="tagpill">Spatial Readability</span>
                             </div>
                             <ul class="outcomes">
-                                <li>Authored physics interactions using Composite Colliders, custom Physics Material 2D, and layer-mask checks to eradicate wall-sticking and ensure snappy jump arcs.</li>
-                                <li>Framed gameplay with Cinemachine 2D Virtual Cameras and Polygon Confiners to dynamically frame level exploration while preventing off-screen bounds breaks.</li>
-                                <li>Constructed a robust GameSession manager using the Singleton pattern and ScenePersist architecture to preserve player lives, coin tallies, and pickup states across level portals.</li>
+                                <li><strong>Micro-Pacing &amp; Jump Precision:</strong> Fine-tuned coyote time, jump buffering, and gravity scale on the Rigidbody2D to eliminate floatiness and deliver responsive, skill-testing traversal.</li>
+                                <li><strong>Hazard Rhythm &amp; Readability:</strong> Arranged spike traps, moving hazards, and enemy patrols with clear visual contrast and rhythmic spacing, allowing players to read hazard cadences before stacking obstacles.</li>
+                                <li><strong>Risk/Reward Routing:</strong> Placed high-value coin clusters along dangerous platform edges and slime patrol routes, forcing real-time decisions between speedrun pathing and completionist scores.</li>
+                                <li><strong>Session Continuity:</strong> Architected persistent session managers to retain life tallies and pickup state across level portals without disrupting platforming flow.</li>
                             </ul>
                         </div>
                     </div>
@@ -1059,14 +1060,15 @@
                             <div class="project-meta">
                                 <span class="tagpill">Unity 3D</span>
                                 <span class="tagpill">C#</span>
-                                <span class="tagpill">New Input System</span>
-                                <span class="tagpill">NavMesh AI</span>
-                                <span class="tagpill">Vehicle Mechanics</span>
+                                <span class="tagpill">Systems Design</span>
+                                <span class="tagpill">Combat Pacing</span>
+                                <span class="tagpill">Encounter Design</span>
                             </div>
                             <ul class="outcomes">
-                                <li>Engineered an expandable weapon system handling modular reload states, ammo economies, bullet physics, and muzzle feedback.</li>
-                                <li>Implemented state-driven AI behaviors featuring melee flankers, cover-seeking ranged units, and responsive line-of-sight tracking.</li>
-                                <li>Integrated vehicle physics alongside mission objective and extraction timer loops to drive dynamic pacing and player decision-making.</li>
+                                <li><strong>Choke Point &amp; Sightline Architecture:</strong> Structured canyon bottlenecks and placed vehicle wrecks to establish dynamic line-of-sight breaks and intentional cover-to-cover combat routes.</li>
+                                <li><strong>Pacing &amp; Resource Pressure:</strong> Coupled a strict evacuation countdown clock with finite ammunition limits, compelling players to balance defensive cover tactics with aggressive forward movement.</li>
+                                <li><strong>Dynamic Encounter Compositions:</strong> Designed mixed-threat enemy squads combining close-range rushers with cover-seeking riflemen to break static camping and force constant repositioning.</li>
+                                <li><strong>Interactive Sandbox Elements:</strong> Integrated drivable vehicles as both rapid traversal tools and mobile cover/battering rams to give players multiple tactical avenues through enemy barricades.</li>
                             </ul>
                         </div>
                     </div>
