@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil Sharma — Game Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #14162B;
+            --muted: #5C5F79;
+            --paper: #FFFFFF;
+            --paper-alt: #F3F4FC;
+            --line: #E4E5F2;
+            --blue: #3654FF;
+            --blue-deep: #263CC7;
+            --coral: #FF5C3E;
+            --teal: #14B8A6;
+            --yellow: #FFC93C;
+            --violet: #8B5CF6;
+            --max: 980px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Manrope', sans-serif;
+            font-size: 17px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .display {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            line-height: 1.02;
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ---------- Nav ---------- */
+        header.site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .site-nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .site-nav .id {
+            font-family: 'Sora',sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            text-decoration: none;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+            .site-nav .id .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 3px;
+                background: var(--blue);
+                display: inline-block;
+            }
+
+        .site-nav nav {
+            display: flex;
+            gap: 30px;
+        }
+
+            .site-nav nav a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 14.5px;
+                font-weight: 600;
+                position: relative;
+                padding-bottom: 4px;
+                transition: color .15s ease;
+            }
+
+                .site-nav nav a::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 100%;
+                    bottom: -1px;
+                    height: 2px;
+                    background: var(--blue);
+                    transition: right .18s ease;
+                }
+
+                .site-nav nav a:hover {
+                    color: var(--ink);
+                }
+
+                    .site-nav nav a:hover::after {
+                        right: 0;
+                    }
+
+                .site-nav nav a.active {
+                    color: var(--ink);
+                }
+
+                    .site-nav nav a.active::after {
+                        right: 0;
+                    }
+
+        @media (max-width: 640px) {
+            .site-nav nav {
+                display: none;
+            }
+        }
+
+        /* ---------- Scroll progress + back to top ---------- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--blue);
+            z-index: 100;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 60;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: var(--ink);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity .2s ease, transform .2s ease, visibility .2s ease, background .15s ease;
+        }
+
+            .back-to-top:hover {
+                background: var(--blue);
+            }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .back-to-top svg {
+                width: 20px;
+                height: 20px;
+            }
+
+        .achievement-toast {
+            position: fixed;
+            bottom: 26px;
+            left: 26px;
+            z-index: 70;
+            max-width: 300px;
+            background: var(--ink);
+            color: #fff;
+            padding: 16px 18px;
+            border-radius: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            border: 2px solid var(--yellow);
+            transform: translateY(16px);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
+        }
+
+            .achievement-toast.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .achievement-toast .badge {
+                font-size: 22px;
+                line-height: 1;
+            }
+
+            .achievement-toast .title {
+                font-family: 'Sora',sans-serif;
+                font-weight: 700;
+                font-size: 13px;
+                color: var(--yellow);
+            }
+
+            .achievement-toast .body {
+                font-size: 12.5px;
+                color: #C7C9E6;
+                margin-top: 4px;
+                line-height: 1.5;
+            }
+
+        /* ---------- Scroll reveal ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+            .reveal.in-view {
+                opacity: 1;
+                transform: none;
+            }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            padding: 100px 0 70px;
+            overflow: hidden;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 26px;
+            opacity: 0;
+            animation: rise .6s ease forwards;
+        }
+
+            .eyebrow-row .chip {
+                background: var(--ink);
+                color: var(--paper);
+                font-family: 'JetBrains Mono',monospace;
+                font-size: 12.5px;
+                padding: 7px 13px;
+                border-radius: 20px;
+            }
+
+            .eyebrow-row .role-line {
+                color: var(--muted);
+                font-size: 14.5px;
+                font-weight: 600;
+            }
+
+        .hero h1 {
+            font-size: clamp(48px, 8.6vw, 96px);
+            color: var(--ink);
+            opacity: 0;
+            animation: rise .7s ease forwards;
+            animation-delay: .08s;
+        }
+
+            .hero h1 .hl {
+                color: var(--blue);
+            }
+
+        .hero .role {
+            margin-top: 22px;
+            max-width: 580px;
+            font-size: 19px;
+            color: var(--muted);
+            opacity: 0;
+            animation: rise .7s ease forwards;
+            animation-delay: .16s;
+        }
+
+        .stat-row {
+            margin-top: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            opacity: 0;
+            animation: rise .7s ease forwards;
+            animation-delay: .24s;
+        }
+
+        .stat-chip {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 16px 22px;
+            border-radius: 14px;
+            min-width: 132px;
+            transition: transform .15s ease;
+        }
+
+            .stat-chip .num {
+                font-family: 'Sora',sans-serif;
+                font-weight: 700;
+                font-size: 26px;
+            }
+
+            .stat-chip .lab {
+                font-size: 12.5px;
+                font-weight: 600;
+                opacity: 0.85;
+            }
+
+            .stat-chip.c-blue {
+                background: var(--blue);
+                color: #fff;
+            }
+
+            .stat-chip.c-coral {
+                background: var(--coral);
+                color: #fff;
+            }
+
+            .stat-chip.c-teal {
+                background: var(--teal);
+                color: #fff;
+            }
+
+            .stat-chip.c-violet {
+                background: var(--violet);
+                color: #fff;
+            }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eyebrow-row, .hero h1, .hero .role, .stat-row {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        /* ---------- Section scaffolding ---------- */
+        section {
+            padding: 84px 0;
+        }
+
+            section.alt {
+                background: var(--paper-alt);
+            }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 42px;
+        }
+
+            .section-head .idx {
+                font-family: 'JetBrains Mono',monospace;
+                font-size: 13px;
+                color: var(--blue);
+                font-weight: 600;
+            }
+
+            .section-head h2 {
+                font-size: 34px;
+            }
+
+        .lede {
+            max-width: 62ch;
+            color: var(--muted);
+            margin-top: -22px;
+            margin-bottom: 36px;
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+            .about-grid p {
+                max-width: 66ch;
+                font-size: 17.5px;
+            }
+
+                .about-grid p + p {
+                    margin-top: 16px;
+                }
+
+        .about-side {
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            border-radius: 16px;
+            padding: 24px 26px;
+        }
+
+            .about-side h3 {
+                font-size: 13px;
+                font-family: 'JetBrains Mono',monospace;
+                color: var(--muted);
+                margin-bottom: 12px;
+                font-weight: 500;
+            }
+
+            .about-side ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .about-side li {
+                font-size: 15px;
+                font-weight: 600;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+                .about-side li:last-child {
+                    border-bottom: none;
+                }
+
+        @media (max-width:760px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Experience ---------- */
+        .timeline {
+            position: relative;
+            padding-left: 34px;
+        }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 6px;
+                top: 8px;
+                bottom: 8px;
+                width: 2px;
+                background: var(--line);
+            }
+
+        .tl-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+            .tl-item:last-child {
+                padding-bottom: 0;
+            }
+
+            .tl-item::before {
+                content: "";
+                position: absolute;
+                left: -34px;
+                top: 4px;
+                width: 14px;
+                height: 14px;
+                border-radius: 4px;
+                background: var(--blue);
+            }
+
+        .tl-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px 16px;
+            margin-bottom: 8px;
+        }
+
+            .tl-head h3 {
+                font-size: 23px;
+            }
+
+            .tl-head .org {
+                color: var(--blue);
+                font-weight: 700;
+                font-size: 14.5px;
+            }
+
+            .tl-head .dates {
+                margin-left: auto;
+                font-family: 'JetBrains Mono',monospace;
+                font-size: 12.5px;
+                color: var(--muted);
+                background: var(--paper-alt);
+                padding: 5px 12px;
+                border-radius: 20px;
+            }
+
+        .tl-item ul {
+            margin: 10px 0 0;
+            padding-left: 20px;
+        }
+
+        .tl-item li {
+            margin-bottom: 5px;
+        }
+
+        /* ---------- Skills ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            border-radius: 16px;
+            padding: 22px 22px 18px;
+            transition: transform .15s ease;
+        }
+
+            .skill-card h3 {
+                font-size: 14px;
+                font-family: 'JetBrains Mono',monospace;
+                font-weight: 600;
+                color: #fff;
+                opacity: 0.9;
+                margin-bottom: 14px;
+            }
+
+            .skill-card ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .skill-card li {
+                color: #fff;
+                font-weight: 600;
+                font-size: 15px;
+                padding: 5px 0;
+            }
+
+            .skill-card.c-blue {
+                background: var(--blue);
+            }
+
+            .skill-card.c-coral {
+                background: var(--coral);
+            }
+
+            .skill-card.c-teal {
+                background: var(--teal);
+            }
+
+            .skill-card.c-violet {
+                background: var(--violet);
+            }
+
+        .skills-grid .skill-card:nth-child(1) {
+            transition-delay: .05s;
+        }
+
+        .skills-grid .skill-card:nth-child(2) {
+            transition-delay: .1s;
+        }
+
+        .skills-grid .skill-card:nth-child(3) {
+            transition-delay: .15s;
+        }
+
+        .skills-grid .skill-card:nth-child(4) {
+            transition-delay: .2s;
+        }
+
+        @media (max-width:760px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width:460px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Projects ---------- */
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .project-card {
+            display: block;
+            border: 2px solid var(--ink);
+            border-radius: 18px;
+            text-decoration: none;
+            color: inherit;
+            background: var(--paper);
+            transition: box-shadow .18s ease;
+        }
+
+        a.project-card:hover {
+            box-shadow: 0 14px 0 0 var(--ink);
+        }
+
+            a.project-card:hover .project-arrow {
+                transform: translate(3px,-3px);
+            }
+
+        .project-inner {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            border-radius: 16px;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .project-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .project-visual img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .project-visual.p1 {
+                background: var(--blue);
+            }
+
+            .project-visual.p2 {
+                background: var(--coral);
+            }
+
+        .project-body {
+            padding: 30px 34px;
+            background: var(--paper);
+        }
+
+        .project-body-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .project-body h3 {
+            font-size: 25px;
+        }
+
+        .project-arrow {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ink);
+            color: #fff;
+            transition: transform .18s ease;
+        }
+
+            .project-arrow svg {
+                width: 17px;
+                height: 17px;
+            }
+
+        .project-hook {
+            margin-top: 5px;
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+
+        .project-body.p1 .project-hook {
+            color: var(--blue);
+        }
+
+        .project-body.p2 .project-hook {
+            color: var(--coral);
+        }
+
+        .project-body p.desc {
+            margin-top: 14px;
+            max-width: 62ch;
+            color: var(--muted);
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+            margin-top: 16px;
+        }
+
+        .tagpill {
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: var(--paper-alt);
+            color: var(--ink);
+            border: 1.5px solid var(--line);
+        }
+
+        .project-body ul.outcomes {
+            margin: 18px 0 0;
+            padding-left: 20px;
+        }
+
+            .project-body ul.outcomes li {
+                margin-bottom: 6px;
+            }
+
+        @media (max-width:700px) {
+            .project-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .project-visual {
+                min-height: 180px;
+            }
+        }
+
+        /* ---------- Education ---------- */
+        .edu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .edu-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+            .edu-item:first-child {
+                padding-top: 0;
+            }
+
+            .edu-item .deg {
+                font-family: 'Sora',sans-serif;
+                font-weight: 700;
+                font-size: 20px;
+            }
+
+            .edu-item .inst {
+                color: var(--muted);
+                font-size: 15px;
+            }
+
+            .edu-item .yr {
+                margin-left: auto;
+                font-family: 'JetBrains Mono',monospace;
+                font-size: 13px;
+                color: var(--blue);
+                font-weight: 600;
+            }
+
+        /* ---------- Contact ---------- */
+        .contact {
+            background: var(--ink);
+            color: #fff;
+            padding: 96px 0 60px;
+        }
+
+            .contact h2 {
+                font-size: clamp(38px,6vw,62px);
+                max-width: 13ch;
+            }
+
+            .contact .sub {
+                margin-top: 16px;
+                max-width: 48ch;
+                color: #B7B9D6;
+                font-size: 17px;
+            }
+
+        .contact-links {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+            .contact-links a {
+                text-decoration: none;
+                padding: 14px 24px;
+                border-radius: 40px;
+                font-weight: 700;
+                font-size: 14.5px;
+                transition: transform .15s ease, opacity .15s ease;
+            }
+
+                .contact-links a.primary {
+                    background: var(--blue);
+                    color: #fff;
+                }
+
+                .contact-links a.secondary {
+                    background: transparent;
+                    color: #fff;
+                    border: 2px solid #3A3D5C;
+                }
+
+                .contact-links a:hover {
+                    transform: translateY(-2px);
+                }
+
+        .foot-note {
+            margin-top: 76px;
+            padding-top: 22px;
+            border-top: 1px solid #2A2C48;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-family: 'JetBrains Mono',monospace;
+            font-size: 12px;
+            color: #8385A8;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-nav">
+        <div class="wrap">
+            <a class="id" href="#top" id="logo"><span class="dot"></span>Akhil Sharma</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="top">
+        <svg class="hero-shapes" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle cx="880" cy="70" r="120" fill="#FFC93C" opacity="0.16" />
+            <rect x="820" y="260" width="150" height="150" rx="28" fill="#3654FF" opacity="0.10" transform="rotate(18 895 335)" />
+            <circle cx="950" cy="470" r="70" fill="#FF5C3E" opacity="0.14" />
+            <rect x="60" y="420" width="90" height="90" rx="20" fill="#14B8A6" opacity="0.14" transform="rotate(-12 105 465)" />
+        </svg>
+        <div class="wrap">
+            <div class="eyebrow-row">
+                <span class="chip">GAME DESIGNER</span>
+                <span class="role-line">Systems · Levels · Narrative</span>
+            </div>
+            <h1>Akhil <span class="hl">Sharma</span></h1>
+            <p class="role">I design gameplay loops and systems that turn a concept into something players actually want to keep playing — built in Unreal Engine 5 and Unity, from first prototype to playable level.</p>
+            <div class="stat-row">
+                <div class="stat-chip c-blue"><span class="num">2</span><span class="lab">Engines — UE5 / Unity</span></div>
+                <div class="stat-chip c-coral"><span class="num">C#</span><span class="lab">+ Blueprints</span></div>
+                <div class="stat-chip c-teal"><span class="num">04</span><span class="lab">Design specialties</span></div>
+                <div class="stat-chip c-violet"><span class="num">HYD</span><span class="lab">Hyderabad, India</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="wrap">
+            <div class="section-head reveal"><span class="idx mono">01</span><h2>About</h2></div>
+            <div class="about-grid">
+                <div class="reveal">
+                    <p>I'm a game designer who likes taking a rough idea and figuring out exactly how it should feel to play — the loop, the pacing, the moment a mechanic clicks. My foundation is in level design, narrative integration, and rapid prototyping, and I move comfortably between Unreal Engine 5 and Unity depending on what a project needs.</p>
+                    <p>That foundation was sharpened through a selective apprenticeship at Kyodai Gameworks, where I worked through the full arc of idea creation and systems design under real production constraints. I'm looking to bring that thinking — structured, playtested, and player-first — to a collaborative game development team.</p>
+                </div>
+                <div class="about-side reveal">
+                    <h3>Currently</h3>
+                    <ul>
+                        <li>Based in Hyderabad, Telangana</li>
+                        <li>M.Sc. Game Technology, in progress</li>
+                        <li>Open to Game Designer / Level Designer roles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alt" id="experience">
+        <div class="wrap">
+            <div class="section-head reveal"><span class="idx mono">02</span><h2>Experience</h2></div>
+            <div class="timeline">
+                <div class="tl-item reveal">
+                    <div class="tl-head">
+                        <h3>Game Designer</h3>
+                        <span class="org">Kyodai Gameworks</span>
+                        <span class="dates">FEB 2026 — MAY 2026</span>
+                    </div>
+                    <ul>
+                        <li>Selected for the studio's Accelerator Program, a selective apprenticeship for early-career designers.</li>
+                        <li>Owned idea creation for new gameplay concepts, taking prompts from a loose premise to a testable design.</li>
+                        <li>Contributed to systems design — defining the rules, feedback loops, and balancing levers that hold a mechanic together.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="wrap">
+            <div class="section-head reveal"><span class="idx mono">03</span><h2>Skills</h2></div>
+            <div class="skills-grid">
+                <div class="skill-card c-blue reveal">
+                    <h3>ENGINES</h3>
+                    <ul><li>Unity</li><li>Unreal Engine 5</li></ul>
+                </div>
+                <div class="skill-card c-coral reveal">
+                    <h3>SCRIPTING</h3>
+                    <ul><li>C#</li><li>Blueprints</li></ul>
+                </div>
+                <div class="skill-card c-teal reveal">
+                    <h3>DESIGN TOOLS</h3>
+                    <ul><li>Miro</li><li>Adobe Creative Suite</li></ul>
+                </div>
+                <div class="skill-card c-violet reveal">
+                    <h3>SPECIALTIES</h3>
+                    <ul><li>Idea Conceptualization</li><li>Systems Design</li><li>Level Design</li><li>Narrative Branching</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alt" id="projects">
+        <div class="wrap">
+            <div class="section-head reveal"><span class="idx mono">04</span><h2>Projects</h2></div>
+            <p class="lede reveal">Featured playable game projects showcasing level layout, system feedback, and core mechanics design.</p>
+            <div class="projects">
+
+                <!-- Project 1: Tilevania -->
+                <a class="project-card reveal" href="https://akiruk.itch.io/tilevania" target="_blank" rel="noopener noreferrer">
+                    <div class="project-inner">
+                        <div class="project-visual p1">
+                            <img src="tilevania.png" alt="Tilevania Cover Art" onerror="this.parentElement.innerHTML='<span class=\'lvl mono\'>LVL.01</span><span class=\'ph-label\'>Tilevania<br>Pixel Platformer</span>'">
+                        </div>
+                        <div class="project-body p1">
+                            <div class="project-body-top">
+                                <div>
+                                    <h3>Tilevania</h3>
+                                    <div class="project-hook">Precision 2D pixel platformer with hazard-dense dungeon layouts</div>
+                                </div>
+                                <span class="project-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </span>
+                            </div>
+                            <p class="desc">A retro-inspired 2D platformer engineered around precise player movement, hazard timing, and classic spatial puzzle pacing. Players leap across crumbling dungeon tiles, avoid lethal spike pits, and outrun aggressive slimes to unlock exit portals.</p>
+                            <div class="project-meta">
+                                <span class="tagpill">Unity</span>
+                                <span class="tagpill">C#</span>
+                                <span class="tagpill">2D Tilemaps</span>
+                                <span class="tagpill">Level Design</span>
+                            </div>
+                            <ul class="outcomes">
+                                <li>Designed responsive player jump curves and collision boundaries tuned for millimeter-level precision.</li>
+                                <li>Created tilemap hazard layouts emphasizing visual readability and progressive challenge escalation.</li>
+                                <li>Integrated pickup feedback loops and enemy pathing triggers to maintain continuous run momentum.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: The Cowboy -->
+                <a class="project-card reveal" href="https://akiruk.itch.io/the-cowboy" target="_blank" rel="noopener noreferrer">
+                    <div class="project-inner">
+                        <div class="project-visual p2">
+                            <img src="the cowboy.png" alt="The Cowboy Cover Art" onerror="this.parentElement.innerHTML='<span class=\'lvl mono\'>LVL.02</span><span class=\'ph-label\'>The Cowboy<br>Top-Down Shooter</span>'">
+                        </div>
+                        <div class="project-body p2">
+                            <div class="project-body-top">
+                                <div>
+                                    <h3>The Cowboy</h3>
+                                    <div class="project-hook">Tactical canyon survival with strict ammo economy and timed extraction</div>
+                                </div>
+                                <span class="project-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </span>
+                            </div>
+                            <p class="desc">A top-down canyon shooter where players face relentless desert ambushes under a countdown clock. Survival demands disciplined ammo management, strategic line-of-sight navigation around vehicle barricades, and sprint routes toward an airfield evacuation.</p>
+                            <div class="project-meta">
+                                <span class="tagpill">Unity</span>
+                                <span class="tagpill">C#</span>
+                                <span class="tagpill">Top-Down Shooter</span>
+                                <span class="tagpill">Systems Design</span>
+                            </div>
+                            <ul class="outcomes">
+                                <li>Built an ammo economy and weapon reload loop balancing player risk versus distance to cover.</li>
+                                <li>Constructed a canyon arena funneling enemy waves through tactical choke points and vehicle barriers.</li>
+                                <li>Implemented a high-stakes timer mechanic linked to the evacuation point to drive player urgency.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="wrap">
+            <div class="section-head reveal"><span class="idx mono">05</span><h2>Education</h2></div>
+            <div class="edu-list">
+                <div class="edu-item reveal" style="transition-delay:.05s">
+                    <span class="deg">M.Sc. Game Technology</span>
+                    <span class="inst">Backstage Pass Institute, Hyderabad, Telangana</span>
+                    <span class="yr">2027</span>
+                </div>
+                <div class="edu-item reveal" style="transition-delay:.1s">
+                    <span class="deg">B.Sc. Graphic &amp; Animation</span>
+                    <span class="inst">Kurukshetra University, Kurukshetra, Haryana</span>
+                    <span class="yr">2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="wrap">
+            <h2 class="reveal">Let's design something worth playing.</h2>
+            <p class="sub reveal">Open to Game Designer and Level Designer roles — happy to walk through a design decision, a system, or a prototype in more detail.</p>
+            <div class="contact-links reveal">
+                <a class="primary" href="mailto:akhil.work.private@gmail.com">Email me</a>
+                <a class="secondary" href="tel:+917206621625">+91 72066 21625</a>
+                <a class="secondary" href="#top">Hyderabad, Telangana</a>
+            </div>
+            <div class="foot-note">
+                <span>AKHIL SHARMA — GAME DESIGNER</span>
+                <span>BUILT ON UE5 / UNITY, DESIGNED ON PAPER FIRST</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></svg>
+    </button>
+
+    <div class="achievement-toast" id="achievementToast">
+        <span class="badge">🏆</span>
+        <div>
+            <div class="title">Achievement Unlocked</div>
+            <div class="body">Curious Recruiter — you found the easter egg. That's the kind of attention to detail I bring to design, too.</div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+        // Scroll progress bar
+        const progress = document.getElementById('scrollProgress');
+        function updateProgress(){
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        progress.style.width = pct + '%';
+        }
+        document.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        function toggleBackToTop(){
+        backToTop.classList.toggle('show', window.scrollY > 480);
+        }
+        document.addEventListener('scroll', toggleBackToTop, { passive: true });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Reveal on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        if('IntersectionObserver' in window){
+        const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+        }
+        });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Active nav link tracking
+        const navLinks = document.querySelectorAll('.site-nav nav a');
+        const sections = document.querySelectorAll('section[id]');
+        const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector('.site-nav nav a[href="#' + id + '"]');
+        if(!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        });
+        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+        sections.forEach(s => navObserver.observe(s));
+        } else {
+        revealEls.forEach(el => el.classList.add('in-view'));
+        }
+
+        // Count-up animation for numeric stat chips
+        document.querySelectorAll('.stat-chip .num').forEach(el => {
+        const raw = el.textContent.trim();
+        if(!/^\d+$/.test(raw)) return;
+        const target = parseInt(raw, 10);
+        const pad = raw.length;
+        let start = null;
+        const duration = 700;
+        function step(ts){
+        if(!start) start = ts;
+        const t = Math.min((ts - start) / duration, 1);
+        el.textContent = String(Math.floor(t * target)).padStart(pad, '0');
+        if(t < 1) requestAnimationFrame(step); else el.textContent = raw;
+        }
+        requestAnimationFrame(step);
+        });
+
+        // Tilt effect on cards
+        function addTilt(card, targetEl, maxDeg, liftPx, scale){
+        targetEl.style.transition = 'transform .15s ease';
+        card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rotateY = x * maxDeg * 2;
+        const rotateX = -y * maxDeg * 2;
+        targetEl.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${-liftPx}px) scale(${scale})`;
+        });
+        card.addEventListener('mouseleave', () => { targetEl.style.transform = ''; });
+        }
+
+        // Project cards: mouse moves on card, but tilt happens ONLY inside .project-inner
+        document.querySelectorAll('.project-card').forEach(card => {
+        const inner = card.querySelector('.project-inner');
+        if (inner) addTilt(card, inner, 3, 4, 1.01);
+        });
+
+        document.querySelectorAll('.skill-card').forEach(el => addTilt(el, el, 5, 3, 1.03));
+        document.querySelectorAll('.stat-chip').forEach(el => addTilt(el, el, 6, 2, 1.04));
+
+        // Easter egg: click the logo 5x fast to unlock a toast
+        const logo = document.getElementById('logo');
+        const toast = document.getElementById('achievementToast');
+        let clicks = 0, clickTimer = null;
+        logo.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => { clicks = 0; }, 1200);
+        if(clicks >= 5){
+        clicks = 0;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4200);
+        }
+        });
+        })();
+    </script>
+
+</body>
+</html>
