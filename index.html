@@ -91,55 +91,55 @@
             gap: 9px;
         }
 
-            .site-nav .id .dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 3px;
-                background: var(--blue);
-                display: inline-block;
-            }
+        .site-nav .id .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            background: var(--blue);
+            display: inline-block;
+        }
 
         .site-nav nav {
             display: flex;
             gap: 30px;
         }
 
-            .site-nav nav a {
-                color: var(--muted);
-                text-decoration: none;
-                font-size: 14.5px;
-                font-weight: 600;
-                position: relative;
-                padding-bottom: 4px;
-                transition: color .15s ease;
-            }
+        .site-nav nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color .15s ease;
+        }
 
-                .site-nav nav a::after {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    right: 100%;
-                    bottom: -1px;
-                    height: 2px;
-                    background: var(--blue);
-                    transition: right .18s ease;
-                }
+        .site-nav nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -1px;
+            height: 2px;
+            background: var(--blue);
+            transition: right .18s ease;
+        }
 
-                .site-nav nav a:hover {
-                    color: var(--ink);
-                }
+        .site-nav nav a:hover {
+            color: var(--ink);
+        }
 
-                    .site-nav nav a:hover::after {
-                        right: 0;
-                    }
+        .site-nav nav a:hover::after {
+            right: 0;
+        }
 
-                .site-nav nav a.active {
-                    color: var(--ink);
-                }
+        .site-nav nav a.active {
+            color: var(--ink);
+        }
 
-                    .site-nav nav a.active::after {
-                        right: 0;
-                    }
+        .site-nav nav a.active::after {
+            right: 0;
+        }
 
         @media (max-width: 640px) {
             .site-nav nav {
@@ -179,20 +179,20 @@
             transition: opacity .2s ease, transform .2s ease, visibility .2s ease, background .15s ease;
         }
 
-            .back-to-top:hover {
-                background: var(--blue);
-            }
+        .back-to-top:hover {
+            background: var(--blue);
+        }
 
-            .back-to-top.show {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-            .back-to-top svg {
-                width: 20px;
-                height: 20px;
-            }
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
 
         .achievement-toast {
             position: fixed;
@@ -214,30 +214,30 @@
             transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
         }
 
-            .achievement-toast.show {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
+        .achievement-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
 
-            .achievement-toast .badge {
-                font-size: 22px;
-                line-height: 1;
-            }
+        .achievement-toast .badge {
+            font-size: 22px;
+            line-height: 1;
+        }
 
-            .achievement-toast .title {
-                font-family: 'Sora',sans-serif;
-                font-weight: 700;
-                font-size: 13px;
-                color: var(--yellow);
-            }
+        .achievement-toast .title {
+            font-family: 'Sora',sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--yellow);
+        }
 
-            .achievement-toast .body {
-                font-size: 12.5px;
-                color: #C7C9E6;
-                margin-top: 4px;
-                line-height: 1.5;
-            }
+        .achievement-toast .body {
+            font-size: 12.5px;
+            color: #C7C9E6;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
 
         /* ---------- Scroll reveal ---------- */
         .reveal {
@@ -246,10 +246,10 @@
             transition: opacity .6s ease, transform .6s ease;
         }
 
-            .reveal.in-view {
-                opacity: 1;
-                transform: none;
-            }
+        .reveal.in-view {
+            opacity: 1;
+            transform: none;
+        }
 
         @media (prefers-reduced-motion: reduce) {
             .reveal {
@@ -287,20 +287,20 @@
             animation: rise .6s ease forwards;
         }
 
-            .eyebrow-row .chip {
-                background: var(--ink);
-                color: var(--paper);
-                font-family: 'JetBrains Mono',monospace;
-                font-size: 12.5px;
-                padding: 7px 13px;
-                border-radius: 20px;
-            }
+        .eyebrow-row .chip {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'JetBrains Mono',monospace;
+            font-size: 12.5px;
+            padding: 7px 13px;
+            border-radius: 20px;
+        }
 
-            .eyebrow-row .role-line {
-                color: var(--muted);
-                font-size: 14.5px;
-                font-weight: 600;
-            }
+        .eyebrow-row .role-line {
+            color: var(--muted);
+            font-size: 14.5px;
+            font-weight: 600;
+        }
 
         .hero h1 {
             font-size: clamp(48px, 8.6vw, 96px);
@@ -310,9 +310,9 @@
             animation-delay: .08s;
         }
 
-            .hero h1 .hl {
-                color: var(--blue);
-            }
+        .hero h1 .hl {
+            color: var(--blue);
+        }
 
         .hero .role {
             margin-top: 22px;
@@ -344,44 +344,43 @@
             transition: transform .15s ease;
         }
 
-            .stat-chip .num {
-                font-family: 'Sora',sans-serif;
-                font-weight: 700;
-                font-size: 26px;
-            }
+        .stat-chip .num {
+            font-family: 'Sora',sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+        }
 
-            .stat-chip .lab {
-                font-size: 12.5px;
-                font-weight: 600;
-                opacity: 0.85;
-            }
+        .stat-chip .lab {
+            font-size: 12.5px;
+            font-weight: 600;
+            opacity: 0.85;
+        }
 
-            .stat-chip.c-blue {
-                background: var(--blue);
-                color: #fff;
-            }
+        .stat-chip.c-blue {
+            background: var(--blue);
+            color: #fff;
+        }
 
-            .stat-chip.c-coral {
-                background: var(--coral);
-                color: #fff;
-            }
+        .stat-chip.c-coral {
+            background: var(--coral);
+            color: #fff;
+        }
 
-            .stat-chip.c-teal {
-                background: var(--teal);
-                color: #fff;
-            }
+        .stat-chip.c-teal {
+            background: var(--teal);
+            color: #fff;
+        }
 
-            .stat-chip.c-violet {
-                background: var(--violet);
-                color: #fff;
-            }
+        .stat-chip.c-violet {
+            background: var(--violet);
+            color: #fff;
+        }
 
         @keyframes rise {
             from {
                 opacity: 0;
                 transform: translateY(14px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -400,9 +399,9 @@
             padding: 84px 0;
         }
 
-            section.alt {
-                background: var(--paper-alt);
-            }
+        section.alt {
+            background: var(--paper-alt);
+        }
 
         .section-head {
             display: flex;
@@ -411,16 +410,16 @@
             margin-bottom: 42px;
         }
 
-            .section-head .idx {
-                font-family: 'JetBrains Mono',monospace;
-                font-size: 13px;
-                color: var(--blue);
-                font-weight: 600;
-            }
+        .section-head .idx {
+            font-family: 'JetBrains Mono',monospace;
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 600;
+        }
 
-            .section-head h2 {
-                font-size: 34px;
-            }
+        .section-head h2 {
+            font-size: 34px;
+        }
 
         .lede {
             max-width: 62ch;
@@ -437,14 +436,14 @@
             align-items: start;
         }
 
-            .about-grid p {
-                max-width: 66ch;
-                font-size: 17.5px;
-            }
+        .about-grid p {
+            max-width: 66ch;
+            font-size: 17.5px;
+        }
 
-                .about-grid p + p {
-                    margin-top: 16px;
-                }
+        .about-grid p + p {
+            margin-top: 16px;
+        }
 
         .about-side {
             background: var(--paper);
@@ -453,30 +452,30 @@
             padding: 24px 26px;
         }
 
-            .about-side h3 {
-                font-size: 13px;
-                font-family: 'JetBrains Mono',monospace;
-                color: var(--muted);
-                margin-bottom: 12px;
-                font-weight: 500;
-            }
+        .about-side h3 {
+            font-size: 13px;
+            font-family: 'JetBrains Mono',monospace;
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
 
-            .about-side ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
+        .about-side ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
-            .about-side li {
-                font-size: 15px;
-                font-weight: 600;
-                padding: 8px 0;
-                border-bottom: 1px solid var(--line);
-            }
+        .about-side li {
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+        }
 
-                .about-side li:last-child {
-                    border-bottom: none;
-                }
+        .about-side li:last-child {
+            border-bottom: none;
+        }
 
         @media (max-width:760px) {
             .about-grid {
@@ -490,35 +489,35 @@
             padding-left: 34px;
         }
 
-            .timeline::before {
-                content: "";
-                position: absolute;
-                left: 6px;
-                top: 8px;
-                bottom: 8px;
-                width: 2px;
-                background: var(--line);
-            }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--line);
+        }
 
         .tl-item {
             position: relative;
             padding-bottom: 30px;
         }
 
-            .tl-item:last-child {
-                padding-bottom: 0;
-            }
+        .tl-item:last-child {
+            padding-bottom: 0;
+        }
 
-            .tl-item::before {
-                content: "";
-                position: absolute;
-                left: -34px;
-                top: 4px;
-                width: 14px;
-                height: 14px;
-                border-radius: 4px;
-                background: var(--blue);
-            }
+        .tl-item::before {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            background: var(--blue);
+        }
 
         .tl-head {
             display: flex;
@@ -528,25 +527,25 @@
             margin-bottom: 8px;
         }
 
-            .tl-head h3 {
-                font-size: 23px;
-            }
+        .tl-head h3 {
+            font-size: 23px;
+        }
 
-            .tl-head .org {
-                color: var(--blue);
-                font-weight: 700;
-                font-size: 14.5px;
-            }
+        .tl-head .org {
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 14.5px;
+        }
 
-            .tl-head .dates {
-                margin-left: auto;
-                font-family: 'JetBrains Mono',monospace;
-                font-size: 12.5px;
-                color: var(--muted);
-                background: var(--paper-alt);
-                padding: 5px 12px;
-                border-radius: 20px;
-            }
+        .tl-head .dates {
+            margin-left: auto;
+            font-family: 'JetBrains Mono',monospace;
+            font-size: 12.5px;
+            color: var(--muted);
+            background: var(--paper-alt);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
 
         .tl-item ul {
             margin: 10px 0 0;
@@ -570,43 +569,43 @@
             transition: transform .15s ease;
         }
 
-            .skill-card h3 {
-                font-size: 14px;
-                font-family: 'JetBrains Mono',monospace;
-                font-weight: 600;
-                color: #fff;
-                opacity: 0.9;
-                margin-bottom: 14px;
-            }
+        .skill-card h3 {
+            font-size: 14px;
+            font-family: 'JetBrains Mono',monospace;
+            font-weight: 600;
+            color: #fff;
+            opacity: 0.9;
+            margin-bottom: 14px;
+        }
 
-            .skill-card ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
+        .skill-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-            .skill-card li {
-                color: #fff;
-                font-weight: 600;
-                font-size: 15px;
-                padding: 5px 0;
-            }
+        .skill-card li {
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 5px 0;
+        }
 
-            .skill-card.c-blue {
-                background: var(--blue);
-            }
+        .skill-card.c-blue {
+            background: var(--blue);
+        }
 
-            .skill-card.c-coral {
-                background: var(--coral);
-            }
+        .skill-card.c-coral {
+            background: var(--coral);
+        }
 
-            .skill-card.c-teal {
-                background: var(--teal);
-            }
+        .skill-card.c-teal {
+            background: var(--teal);
+        }
 
-            .skill-card.c-violet {
-                background: var(--violet);
-            }
+        .skill-card.c-violet {
+            background: var(--violet);
+        }
 
         .skills-grid .skill-card:nth-child(1) {
             transition-delay: .05s;
@@ -657,9 +656,9 @@
             box-shadow: 0 14px 0 0 var(--ink);
         }
 
-            a.project-card:hover .project-arrow {
-                transform: translate(3px,-3px);
-            }
+        a.project-card:hover .project-arrow {
+            transform: translate(3px,-3px);
+        }
 
         .project-inner {
             display: grid;
@@ -684,20 +683,20 @@
             overflow: hidden;
         }
 
-            .project-visual img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-            .project-visual.p1 {
-                background: var(--blue);
-            }
+        .project-visual.p1 {
+            background: var(--blue);
+        }
 
-            .project-visual.p2 {
-                background: var(--coral);
-            }
+        .project-visual.p2 {
+            background: var(--coral);
+        }
 
         .project-body {
             padding: 30px 34px;
@@ -728,10 +727,10 @@
             transition: transform .18s ease;
         }
 
-            .project-arrow svg {
-                width: 17px;
-                height: 17px;
-            }
+        .project-arrow svg {
+            width: 17px;
+            height: 17px;
+        }
 
         .project-hook {
             margin-top: 5px;
@@ -775,9 +774,9 @@
             padding-left: 20px;
         }
 
-            .project-body ul.outcomes li {
-                margin-bottom: 6px;
-            }
+        .project-body ul.outcomes li {
+            margin-bottom: 6px;
+        }
 
         @media (max-width:700px) {
             .project-inner {
@@ -805,28 +804,28 @@
             border-bottom: 1px solid var(--line);
         }
 
-            .edu-item:first-child {
-                padding-top: 0;
-            }
+        .edu-item:first-child {
+            padding-top: 0;
+        }
 
-            .edu-item .deg {
-                font-family: 'Sora',sans-serif;
-                font-weight: 700;
-                font-size: 20px;
-            }
+        .edu-item .deg {
+            font-family: 'Sora',sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
 
-            .edu-item .inst {
-                color: var(--muted);
-                font-size: 15px;
-            }
+        .edu-item .inst {
+            color: var(--muted);
+            font-size: 15px;
+        }
 
-            .edu-item .yr {
-                margin-left: auto;
-                font-family: 'JetBrains Mono',monospace;
-                font-size: 13px;
-                color: var(--blue);
-                font-weight: 600;
-            }
+        .edu-item .yr {
+            margin-left: auto;
+            font-family: 'JetBrains Mono',monospace;
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 600;
+        }
 
         /* ---------- Contact ---------- */
         .contact {
@@ -835,17 +834,17 @@
             padding: 96px 0 60px;
         }
 
-            .contact h2 {
-                font-size: clamp(38px,6vw,62px);
-                max-width: 13ch;
-            }
+        .contact h2 {
+            font-size: clamp(38px,6vw,62px);
+            max-width: 13ch;
+        }
 
-            .contact .sub {
-                margin-top: 16px;
-                max-width: 48ch;
-                color: #B7B9D6;
-                font-size: 17px;
-            }
+        .contact .sub {
+            margin-top: 16px;
+            max-width: 48ch;
+            color: #B7B9D6;
+            font-size: 17px;
+        }
 
         .contact-links {
             margin-top: 40px;
@@ -854,29 +853,29 @@
             gap: 14px;
         }
 
-            .contact-links a {
-                text-decoration: none;
-                padding: 14px 24px;
-                border-radius: 40px;
-                font-weight: 700;
-                font-size: 14.5px;
-                transition: transform .15s ease, opacity .15s ease;
-            }
+        .contact-links a {
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14.5px;
+            transition: transform .15s ease, opacity .15s ease;
+        }
 
-                .contact-links a.primary {
-                    background: var(--blue);
-                    color: #fff;
-                }
+        .contact-links a.primary {
+            background: var(--blue);
+            color: #fff;
+        }
 
-                .contact-links a.secondary {
-                    background: transparent;
-                    color: #fff;
-                    border: 2px solid #3A3D5C;
-                }
+        .contact-links a.secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #3A3D5C;
+        }
 
-                .contact-links a:hover {
-                    transform: translateY(-2px);
-                }
+        .contact-links a:hover {
+            transform: translateY(-2px);
+        }
 
         .foot-note {
             margin-top: 76px;
@@ -1016,23 +1015,25 @@
                             <div class="project-body-top">
                                 <div>
                                     <h3>Tilevania</h3>
-                                    <div class="project-hook">Precision 2D pixel platformer with hazard-dense dungeon layouts</div>
+                                    <div class="project-hook">Modular 2D tilemap platformer featuring Rule Tiles, Cinemachine camera confining, and persistent game state architecture</div>
                                 </div>
                                 <span class="project-arrow" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
                                 </span>
                             </div>
-                            <p class="desc">A retro-inspired 2D platformer engineered around precise player movement, hazard timing, and classic spatial puzzle pacing. Players leap across crumbling dungeon tiles, avoid lethal spike pits, and outrun aggressive slimes to unlock exit portals.</p>
+                            <p class="desc">A classic 2D action platformer built with Unity's Tilemap ecosystem and the New Input System. Engineered multi-tiered terrain using Composite Colliders and Rule Tiles, layered state machine animations for running, jumping, and ladder climbing, and implemented seamless level streaming through persistent session singletons.</p>
                             <div class="project-meta">
-                                <span class="tagpill">Unity</span>
+                                <span class="tagpill">Unity 2D</span>
                                 <span class="tagpill">C#</span>
-                                <span class="tagpill">2D Tilemaps</span>
-                                <span class="tagpill">Level Design</span>
+                                <span class="tagpill">Unity Tilemaps</span>
+                                <span class="tagpill">Rule Tiles</span>
+                                <span class="tagpill">Cinemachine</span>
+                                <span class="tagpill">State Machines</span>
                             </div>
                             <ul class="outcomes">
-                                <li>Designed responsive player jump curves and collision boundaries tuned for millimeter-level precision.</li>
-                                <li>Created tilemap hazard layouts emphasizing visual readability and progressive challenge escalation.</li>
-                                <li>Integrated pickup feedback loops and enemy pathing triggers to maintain continuous run momentum.</li>
+                                <li>Authored physics interactions using Composite Colliders, custom Physics Material 2D, and layer-mask checks to eradicate wall-sticking and ensure snappy jump arcs.</li>
+                                <li>Framed gameplay with Cinemachine 2D Virtual Cameras and Polygon Confiners to dynamically frame level exploration while preventing off-screen bounds breaks.</li>
+                                <li>Constructed a robust GameSession manager using the Singleton pattern and ScenePersist architecture to preserve player lives, coin tallies, and pickup states across level portals.</li>
                             </ul>
                         </div>
                     </div>
@@ -1048,23 +1049,24 @@
                             <div class="project-body-top">
                                 <div>
                                     <h3>The Cowboy</h3>
-                                    <div class="project-hook">Tactical canyon survival with strict ammo economy and timed extraction</div>
+                                    <div class="project-hook">Tactical 3D top-down shooter built on Unity's New Input System, featuring dynamic enemy AI and objective extraction</div>
                                 </div>
                                 <span class="project-arrow" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
                                 </span>
                             </div>
-                            <p class="desc">A top-down canyon shooter where players face relentless desert ambushes under a countdown clock. Survival demands disciplined ammo management, strategic line-of-sight navigation around vehicle barricades, and sprint routes toward an airfield evacuation.</p>
+                            <p class="desc">A fast-paced 3D top-down shooter designed around high-stakes combat and dynamic sandbox encounters. Built using modern C# architecture in Unity, players must out-maneuver tactical AI squads, utilize drivable vehicles, and complete time-critical evacuation objectives across low-poly desert canyons.</p>
                             <div class="project-meta">
-                                <span class="tagpill">Unity</span>
+                                <span class="tagpill">Unity 3D</span>
                                 <span class="tagpill">C#</span>
-                                <span class="tagpill">Top-Down Shooter</span>
-                                <span class="tagpill">Systems Design</span>
+                                <span class="tagpill">New Input System</span>
+                                <span class="tagpill">NavMesh AI</span>
+                                <span class="tagpill">Vehicle Mechanics</span>
                             </div>
                             <ul class="outcomes">
-                                <li>Built an ammo economy and weapon reload loop balancing player risk versus distance to cover.</li>
-                                <li>Constructed a canyon arena funneling enemy waves through tactical choke points and vehicle barriers.</li>
-                                <li>Implemented a high-stakes timer mechanic linked to the evacuation point to drive player urgency.</li>
+                                <li>Engineered an expandable weapon system handling modular reload states, ammo economies, bullet physics, and muzzle feedback.</li>
+                                <li>Implemented state-driven AI behaviors featuring melee flankers, cover-seeking ranged units, and responsive line-of-sight tracking.</li>
+                                <li>Integrated vehicle physics alongside mission objective and extraction timer loops to drive dynamic pacing and player decision-making.</li>
                             </ul>
                         </div>
                     </div>
@@ -1124,110 +1126,110 @@
 
     <script>
         (function(){
-        // Scroll progress bar
-        const progress = document.getElementById('scrollProgress');
-        function updateProgress(){
-        const h = document.documentElement;
-        const max = h.scrollHeight - h.clientHeight;
-        const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-        progress.style.width = pct + '%';
-        }
-        document.addEventListener('scroll', updateProgress, { passive: true });
-        updateProgress();
+            // Scroll progress bar
+            const progress = document.getElementById('scrollProgress');
+            function updateProgress(){
+                const h = document.documentElement;
+                const max = h.scrollHeight - h.clientHeight;
+                const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+                progress.style.width = pct + '%';
+            }
+            document.addEventListener('scroll', updateProgress, { passive: true });
+            updateProgress();
 
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        function toggleBackToTop(){
-        backToTop.classList.toggle('show', window.scrollY > 480);
-        }
-        document.addEventListener('scroll', toggleBackToTop, { passive: true });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            function toggleBackToTop(){
+                backToTop.classList.toggle('show', window.scrollY > 480);
+            }
+            document.addEventListener('scroll', toggleBackToTop, { passive: true });
+            backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Reveal on scroll
-        const revealEls = document.querySelectorAll('.reveal');
-        if('IntersectionObserver' in window){
-        const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-        if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
-        }
-        });
-        }, { threshold: 0.15 });
-        revealEls.forEach(el => revealObserver.observe(el));
+            // Reveal on scroll
+            const revealEls = document.querySelectorAll('.reveal');
+            if('IntersectionObserver' in window){
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting){
+                            entry.target.classList.add('in-view');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                revealEls.forEach(el => revealObserver.observe(el));
 
-        // Active nav link tracking
-        const navLinks = document.querySelectorAll('.site-nav nav a');
-        const sections = document.querySelectorAll('section[id]');
-        const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        const id = entry.target.getAttribute('id');
-        const link = document.querySelector('.site-nav nav a[href="#' + id + '"]');
-        if(!link) return;
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        });
-        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-        sections.forEach(s => navObserver.observe(s));
-        } else {
-        revealEls.forEach(el => el.classList.add('in-view'));
-        }
+                // Active nav link tracking
+                const navLinks = document.querySelectorAll('.site-nav nav a');
+                const sections = document.querySelectorAll('section[id]');
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(!entry.isIntersecting) return;
+                        const id = entry.target.getAttribute('id');
+                        const link = document.querySelector('.site-nav nav a[href="#' + id + '"]');
+                        if(!link) return;
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    });
+                }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+                sections.forEach(s => navObserver.observe(s));
+            } else {
+                revealEls.forEach(el => el.classList.add('in-view'));
+            }
 
-        // Count-up animation for numeric stat chips
-        document.querySelectorAll('.stat-chip .num').forEach(el => {
-        const raw = el.textContent.trim();
-        if(!/^\d+$/.test(raw)) return;
-        const target = parseInt(raw, 10);
-        const pad = raw.length;
-        let start = null;
-        const duration = 700;
-        function step(ts){
-        if(!start) start = ts;
-        const t = Math.min((ts - start) / duration, 1);
-        el.textContent = String(Math.floor(t * target)).padStart(pad, '0');
-        if(t < 1) requestAnimationFrame(step); else el.textContent = raw;
-        }
-        requestAnimationFrame(step);
-        });
+            // Count-up animation for numeric stat chips
+            document.querySelectorAll('.stat-chip .num').forEach(el => {
+                const raw = el.textContent.trim();
+                if(!/^\d+$/.test(raw)) return;
+                const target = parseInt(raw, 10);
+                const pad = raw.length;
+                let start = null;
+                const duration = 700;
+                function step(ts){
+                    if(!start) start = ts;
+                    const t = Math.min((ts - start) / duration, 1);
+                    el.textContent = String(Math.floor(t * target)).padStart(pad, '0');
+                    if(t < 1) requestAnimationFrame(step); else el.textContent = raw;
+                }
+                requestAnimationFrame(step);
+            });
 
-        // Tilt effect on cards
-        function addTilt(card, targetEl, maxDeg, liftPx, scale){
-        targetEl.style.transition = 'transform .15s ease';
-        card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const rotateY = x * maxDeg * 2;
-        const rotateX = -y * maxDeg * 2;
-        targetEl.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${-liftPx}px) scale(${scale})`;
-        });
-        card.addEventListener('mouseleave', () => { targetEl.style.transform = ''; });
-        }
+            // Tilt effect on cards
+            function addTilt(card, targetEl, maxDeg, liftPx, scale){
+                targetEl.style.transition = 'transform .15s ease';
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    const rotateY = x * maxDeg * 2;
+                    const rotateX = -y * maxDeg * 2;
+                    targetEl.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${-liftPx}px) scale(${scale})`;
+                });
+                card.addEventListener('mouseleave', () => { targetEl.style.transform = ''; });
+            }
 
-        // Project cards: mouse moves on card, but tilt happens ONLY inside .project-inner
-        document.querySelectorAll('.project-card').forEach(card => {
-        const inner = card.querySelector('.project-inner');
-        if (inner) addTilt(card, inner, 3, 4, 1.01);
-        });
+            // Apply tilt exclusively to .project-inner so the hard shadow remains pinned
+            document.querySelectorAll('.project-card').forEach(card => {
+                const inner = card.querySelector('.project-inner');
+                if (inner) addTilt(card, inner, 3, 4, 1.01);
+            });
 
-        document.querySelectorAll('.skill-card').forEach(el => addTilt(el, el, 5, 3, 1.03));
-        document.querySelectorAll('.stat-chip').forEach(el => addTilt(el, el, 6, 2, 1.04));
+            document.querySelectorAll('.skill-card').forEach(el => addTilt(el, el, 5, 3, 1.03));
+            document.querySelectorAll('.stat-chip').forEach(el => addTilt(el, el, 6, 2, 1.04));
 
-        // Easter egg: click the logo 5x fast to unlock a toast
-        const logo = document.getElementById('logo');
-        const toast = document.getElementById('achievementToast');
-        let clicks = 0, clickTimer = null;
-        logo.addEventListener('click', () => {
-        clicks++;
-        clearTimeout(clickTimer);
-        clickTimer = setTimeout(() => { clicks = 0; }, 1200);
-        if(clicks >= 5){
-        clicks = 0;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4200);
-        }
-        });
+            // Easter egg: click the logo 5x fast to unlock a toast
+            const logo = document.getElementById('logo');
+            const toast = document.getElementById('achievementToast');
+            let clicks = 0, clickTimer = null;
+            logo.addEventListener('click', () => {
+                clicks++;
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => { clicks = 0; }, 1200);
+                if(clicks >= 5){
+                    clicks = 0;
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 4200);
+                }
+            });
         })();
     </script>
 
