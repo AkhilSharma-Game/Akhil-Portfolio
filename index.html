@@ -877,19 +877,7 @@
             z-index: 2;
         }
 
-        .project-visual .ph-sub {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11.5px;
-            opacity: 0.88;
-            margin-top: 8px;
-            position: relative;
-            z-index: 2;
-        }
-
         .project-visual.p-cowboy { background: var(--coral); }
-        .project-visual.p-ue5 {
-            background: linear-gradient(135deg, #1E1B4B 0%, #3654FF 55%, #0D9488 100%);
-        }
         .project-visual.p-tile { background: var(--blue); }
 
         .project-body {
@@ -932,7 +920,6 @@
         }
 
         .project-body.p-cowboy .project-hook { color: var(--coral); }
-        .project-body.p-ue5 .project-hook { color: var(--violet); }
         .project-body.p-tile .project-hook { color: var(--blue); }
 
         .project-body p.desc {
@@ -1287,7 +1274,7 @@
             <div class="stat-row">
                 <div class="stat-chip c-blue"><span class="num">02</span><span class="lab">Engines — UE5 &amp; Unity</span></div>
                 <div class="stat-chip c-coral"><span class="num">C#</span><span class="lab">+ UE5 Blueprints / UMG</span></div>
-                <div class="stat-chip c-teal"><span class="num">03</span><span class="lab">Featured Case Studies</span></div>
+                <div class="stat-chip c-teal"><span class="num">04</span><span class="lab">Design specialties</span></div>
                 <div class="stat-chip c-violet"><span class="num">HYD</span><span class="lab">Hyderabad / Remote</span></div>
             </div>
         </div>
@@ -1392,7 +1379,7 @@
                 <span class="idx mono">04 //</span>
                 <h2>Featured Projects &amp; Case Studies</h2>
             </div>
-            <p class="lede reveal">Playable vertical slices and technical design studies demonstrating combat encounter architecture, UE5/Unity scripting, and iterative playtest balancing.</p>
+            <p class="lede reveal">Playable vertical slices and technical design studies demonstrating combat encounter architecture, scripting, and iterative playtest balancing.</p>
             <div class="projects">
 
                 <!-- Project 1: The Cowboy -->
@@ -1454,72 +1441,12 @@
                     </div>
                 </article>
 
-                <!-- Project 2: Street Dash: Hyperdelivery -->
-                <article class="project-card reveal">
-                    <div class="project-inner">
-                        <div class="project-visual p-ue5">
-                            <img src="street-dash.png" alt="Street Dash Hyperdelivery Concept & Prototype" onerror="this.style.display='none'">
-                            <span class="lvl mono">CASE STUDY 02 // UE5 &amp; SYSTEMS</span>
-                            <span class="ph-label">Street Dash:<br>Hyperdelivery</span>
-                            <span class="ph-sub">UE5 Blueprints · UMG · Route Loop</span>
-                        </div>
-                        <div class="project-body p-ue5">
-                            <div class="project-body-top">
-                                <div>
-                                    <div class="project-badge-row">
-                                        <span class="engine-badge">UNREAL ENGINE 5 · BLUEPRINTS &amp; UMG</span>
-                                    </div>
-                                    <h3>Street Dash: Hyperdelivery</h3>
-                                    <div class="project-hook">High-velocity arcade delivery systems design &amp; UE5 prototype featuring risk/reward route optimization, combo multipliers, and telemetry HUD</div>
-                                </div>
-                            </div>
-                            <p class="desc">An arcade action-delivery concept and technical systems prototype built around high-speed urban navigation and split-second route optimization. Designed to test how spatial risk, momentum conservation, and dynamic delivery timers create an addictive "one-more-run" score-chasing core loop in Unreal Engine 5.</p>
-                            <div class="project-meta">
-                                <span class="tagpill">UE5 Blueprints</span>
-                                <span class="tagpill">UMG Widget UI</span>
-                                <span class="tagpill">Core Loop &amp; Economy</span>
-                                <span class="tagpill">Route Optimization</span>
-                                <span class="tagpill">3Cs &amp; Arcade Feel</span>
-                            </div>
-                            <ul class="outcomes">
-                                <li><strong>Multi-Tiered Route Architecture:</strong> Designed intersecting level lanes (Safe Main Roads vs. High-Risk Alley Shortcuts) that test player map mastery and momentum control under decaying delivery clocks.</li>
-                                <li><strong>Momentum &amp; Combo Systems:</strong> Engineered a flow-state scoring loop where chaining near-misses, drift turns, and on-time drop-offs scales a dynamic payout multiplier while cargo damage resets streaks.</li>
-                                <li><strong>Real-Time UMG Telemetry &amp; Feedback:</strong> Structured non-intrusive UMG HUD widgets and directional objective indicators so players can read timer states and route branches at high speeds without eye-strain.</li>
-                                <li><strong>Dynamic Difficulty &amp; Pinch-Point Balancing:</strong> Modeled escalation curves across shift waves by scaling traffic density, fragile-package modifiers, and multi-stop prioritization puzzles.</li>
-                            </ul>
-
-                            <div class="project-actions">
-                                <a class="btn-project play" href="#contact">
-                                    Request GDD &amp; Blueprint Walkthrough
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
-                                </a>
-                                <button class="btn-project breakdown-toggle" type="button" aria-expanded="false">
-                                    <span>+ View Core Loop &amp; Telemetry Spec</span>
-                                </button>
-                            </div>
-
-                            <div class="design-drawer">
-                                <div class="drawer-grid">
-                                    <div class="drawer-box">
-                                        <h4>Core Loop Architecture</h4>
-                                        <p><strong>Accept Dispatch → Select Route Risk (Safe vs. Shortcut) → Maintain Speed/Combo Multiplier → Execute Drop-off → Invest Payout in Handling/Cargo Upgrades.</strong></p>
-                                    </div>
-                                    <div class="drawer-box">
-                                        <h4>UE5 Technical Implementation</h4>
-                                        <p>Built modular Blueprint splines for route checkpoints, dynamic UMG widget animations bound to timer decay events, and physical camera FOV scaling tied to player velocity.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3: Tilevania -->
+                <!-- Project 2: Tilevania -->
                 <article class="project-card reveal">
                     <div class="project-inner">
                         <div class="project-visual p-tile">
                             <img src="tilevania.png" alt="Tilevania 2D Movement & Level Design Study" onerror="this.style.display='none'">
-                            <span class="lvl mono">CASE STUDY 03 // 3Cs &amp; PACING</span>
+                            <span class="lvl mono">CASE STUDY 02 // 3Cs &amp; PACING</span>
                             <span class="ph-label">Tilevania<br>3Cs &amp; Level Study</span>
                         </div>
                         <div class="project-body p-tile">
