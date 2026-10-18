@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akhil Sharma — Game Designer</title>
+    <title>Akhil Sharma — Game & Systems Designer (UE5 / Unity)</title>
+    <meta name="description" content="Game Designer & Technical Systems Designer based in Hyderabad, India. Specializing in Unreal Engine 5 Blueprints, Unity C#, 3Cs movement feel, and combat/level pacing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #14162B;
@@ -17,9 +18,9 @@
             --blue: #3654FF;
             --blue-deep: #263CC7;
             --coral: #FF5C3E;
-            --teal: #14B8A6;
+            --teal: #0D9488;
             --yellow: #FFC93C;
-            --violet: #8B5CF6;
+            --violet: #7C3AED;
             --max: 980px;
         }
 
@@ -41,10 +42,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .display {
+        h1, h2, h3, h4, .display {
             font-family: 'Sora', sans-serif;
             font-weight: 700;
-            line-height: 1.02;
+            line-height: 1.08;
             margin: 0;
             letter-spacing: -0.01em;
         }
@@ -68,8 +69,8 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--line);
         }
 
@@ -81,7 +82,7 @@
         }
 
         .site-nav .id {
-            font-family: 'Sora',sans-serif;
+            font-family: 'Sora', sans-serif;
             font-weight: 700;
             font-size: 19px;
             text-decoration: none;
@@ -101,10 +102,11 @@
 
         .site-nav nav {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 26px;
         }
 
-        .site-nav nav a {
+        .site-nav nav a.nav-link {
             color: var(--muted);
             text-decoration: none;
             font-size: 14.5px;
@@ -114,7 +116,7 @@
             transition: color .15s ease;
         }
 
-        .site-nav nav a::after {
+        .site-nav nav a.nav-link::after {
             content: "";
             position: absolute;
             left: 0;
@@ -125,26 +127,155 @@
             transition: right .18s ease;
         }
 
-        .site-nav nav a:hover {
+        .site-nav nav a.nav-link:hover {
             color: var(--ink);
         }
 
-        .site-nav nav a:hover::after {
+        .site-nav nav a.nav-link:hover::after,
+        .site-nav nav a.nav-link.active::after {
             right: 0;
         }
 
-        .site-nav nav a.active {
+        .site-nav nav a.nav-link.active {
             color: var(--ink);
         }
 
-        .site-nav nav a.active::after {
-            right: 0;
+        .site-nav .nav-cta {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            font-family: 'Manrope', sans-serif;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background .15s ease, transform .15s ease;
         }
 
-        @media (max-width: 640px) {
-            .site-nav nav {
+        .site-nav .nav-cta:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 720px) {
+            .site-nav nav a.nav-link {
                 display: none;
             }
+        }
+
+        /* ---------- CV Dropdown / Popover Menu ---------- */
+        .cv-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cv-trigger .chev {
+            width: 14px;
+            height: 14px;
+            transition: transform .2s ease;
+        }
+
+        .cv-dropdown.open .cv-trigger .chev {
+            transform: rotate(180deg);
+        }
+
+        .cv-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            min-width: 245px;
+            background: var(--paper);
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            border-radius: 14px;
+            box-shadow: 0 10px 0 0 var(--ink);
+            padding: 8px;
+            z-index: 120;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+        }
+
+        .cv-menu.align-right {
+            left: auto;
+            right: 0;
+        }
+
+        .cv-menu.drop-up {
+            top: auto;
+            bottom: calc(100% + 10px);
+            transform: translateY(-8px);
+        }
+
+        .cv-dropdown.open .cv-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .cv-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 10px 12px;
+            border-radius: 9px;
+            text-decoration: none;
+            color: var(--ink) !important;
+            border: none !important;
+            background: transparent !important;
+            transition: background .14s ease;
+        }
+
+        .cv-menu-item:hover {
+            background: var(--paper-alt) !important;
+            transform: none !important;
+        }
+
+        .cv-menu-item + .cv-menu-item {
+            margin-top: 4px;
+        }
+
+        .cv-menu-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .cv-menu-icon.doc { background: var(--blue); }
+        .cv-menu-icon.pdf { background: var(--coral); }
+
+        .cv-menu-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.25;
+        }
+
+        .cv-menu-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .cv-menu-sub {
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-top: 2px;
         }
 
         /* ---------- Scroll progress + back to top ---------- */
@@ -226,7 +357,7 @@
         }
 
         .achievement-toast .title {
-            font-family: 'Sora',sans-serif;
+            font-family: 'Sora', sans-serif;
             font-weight: 700;
             font-size: 13px;
             color: var(--yellow);
@@ -262,8 +393,8 @@
         /* ---------- Hero ---------- */
         .hero {
             position: relative;
-            padding: 100px 0 70px;
-            overflow: hidden;
+            padding: 90px 0 70px;
+            overflow: visible;
         }
 
         .hero-shapes {
@@ -271,6 +402,7 @@
             inset: 0;
             z-index: 0;
             pointer-events: none;
+            overflow: hidden;
         }
 
         .hero .wrap {
@@ -280,9 +412,10 @@
 
         .eyebrow-row {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 10px;
-            margin-bottom: 26px;
+            margin-bottom: 24px;
             opacity: 0;
             animation: rise .6s ease forwards;
         }
@@ -290,10 +423,31 @@
         .eyebrow-row .chip {
             background: var(--ink);
             color: var(--paper);
-            font-family: 'JetBrains Mono',monospace;
-            font-size: 12.5px;
-            padding: 7px 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 6px 13px;
             border-radius: 20px;
+        }
+
+        .eyebrow-row .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ECFDF5;
+            color: #065F46;
+            border: 1px solid #A7F3D0;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .eyebrow-row .status-pill::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10B981;
         }
 
         .eyebrow-row .role-line {
@@ -303,7 +457,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8.6vw, 96px);
+            font-size: clamp(48px, 8.4vw, 92px);
             color: var(--ink);
             opacity: 0;
             animation: rise .7s ease forwards;
@@ -316,7 +470,7 @@
 
         .hero .role {
             margin-top: 22px;
-            max-width: 580px;
+            max-width: 620px;
             font-size: 19px;
             color: var(--muted);
             opacity: 0;
@@ -324,14 +478,68 @@
             animation-delay: .16s;
         }
 
+        .hero-cta-row {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: rise .7s ease forwards;
+            animation-delay: .2s;
+            position: relative;
+            z-index: 20;
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Manrope', sans-serif;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14.5px;
+            padding: 13px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+        }
+
+        .btn-hero.primary {
+            background: var(--blue);
+            color: #fff;
+            border: 2px solid var(--ink);
+            box-shadow: 0 4px 0 0 var(--ink);
+        }
+
+        .btn-hero.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 0 var(--ink);
+        }
+
+        .btn-hero.secondary {
+            background: var(--paper);
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            box-shadow: 0 4px 0 0 var(--ink);
+        }
+
+        .btn-hero.secondary:hover {
+            transform: translateY(-2px);
+            background: var(--paper-alt);
+            box-shadow: 0 6px 0 0 var(--ink);
+        }
+
         .stat-row {
-            margin-top: 48px;
+            margin-top: 44px;
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
             opacity: 0;
             animation: rise .7s ease forwards;
-            animation-delay: .24s;
+            animation-delay: .26s;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-chip {
@@ -340,55 +548,34 @@
             gap: 3px;
             padding: 16px 22px;
             border-radius: 14px;
-            min-width: 132px;
+            min-width: 140px;
             transition: transform .15s ease;
         }
 
         .stat-chip .num {
-            font-family: 'Sora',sans-serif;
+            font-family: 'Sora', sans-serif;
             font-weight: 700;
-            font-size: 26px;
+            font-size: 25px;
         }
 
         .stat-chip .lab {
             font-size: 12.5px;
             font-weight: 600;
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
-        .stat-chip.c-blue {
-            background: var(--blue);
-            color: #fff;
-        }
-
-        .stat-chip.c-coral {
-            background: var(--coral);
-            color: #fff;
-        }
-
-        .stat-chip.c-teal {
-            background: var(--teal);
-            color: #fff;
-        }
-
-        .stat-chip.c-violet {
-            background: var(--violet);
-            color: #fff;
-        }
+        .stat-chip.c-blue { background: var(--blue); color: #fff; }
+        .stat-chip.c-coral { background: var(--coral); color: #fff; }
+        .stat-chip.c-teal { background: var(--teal); color: #fff; }
+        .stat-chip.c-violet { background: var(--violet); color: #fff; }
 
         @keyframes rise {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .eyebrow-row, .hero h1, .hero .role, .stat-row {
+            .eyebrow-row, .hero h1, .hero .role, .hero-cta-row, .stat-row {
                 animation: none;
                 opacity: 1;
             }
@@ -411,8 +598,8 @@
         }
 
         .section-head .idx {
-            font-family: 'JetBrains Mono',monospace;
-            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
             color: var(--blue);
             font-weight: 600;
         }
@@ -422,7 +609,7 @@
         }
 
         .lede {
-            max-width: 62ch;
+            max-width: 65ch;
             color: var(--muted);
             margin-top: -22px;
             margin-bottom: 36px;
@@ -439,6 +626,7 @@
         .about-grid p {
             max-width: 66ch;
             font-size: 17.5px;
+            margin: 0;
         }
 
         .about-grid p + p {
@@ -450,14 +638,16 @@
             border: 2px solid var(--ink);
             border-radius: 16px;
             padding: 24px 26px;
+            box-shadow: 0 8px 0 0 var(--ink);
         }
 
         .about-side h3 {
             font-size: 13px;
-            font-family: 'JetBrains Mono',monospace;
-            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--blue);
             margin-bottom: 12px;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.04em;
         }
 
         .about-side ul {
@@ -469,7 +659,7 @@
         .about-side li {
             font-size: 15px;
             font-weight: 600;
-            padding: 8px 0;
+            padding: 9px 0;
             border-bottom: 1px solid var(--line);
         }
 
@@ -534,15 +724,16 @@
         .tl-head .org {
             color: var(--blue);
             font-weight: 700;
-            font-size: 14.5px;
+            font-size: 15px;
         }
 
         .tl-head .dates {
             margin-left: auto;
-            font-family: 'JetBrains Mono',monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 12.5px;
-            color: var(--muted);
-            background: var(--paper-alt);
+            color: var(--ink);
+            background: #fff;
+            border: 1px solid var(--line);
             padding: 5px 12px;
             border-radius: 20px;
         }
@@ -553,13 +744,13 @@
         }
 
         .tl-item li {
-            margin-bottom: 5px;
+            margin-bottom: 7px;
         }
 
         /* ---------- Skills ---------- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(4,1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -570,8 +761,8 @@
         }
 
         .skill-card h3 {
-            font-size: 14px;
-            font-family: 'JetBrains Mono',monospace;
+            font-size: 13.5px;
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
             color: #fff;
             opacity: 0.9;
@@ -587,41 +778,19 @@
         .skill-card li {
             color: #fff;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14.5px;
             padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.14);
         }
 
-        .skill-card.c-blue {
-            background: var(--blue);
+        .skill-card li:last-child {
+            border-bottom: none;
         }
 
-        .skill-card.c-coral {
-            background: var(--coral);
-        }
-
-        .skill-card.c-teal {
-            background: var(--teal);
-        }
-
-        .skill-card.c-violet {
-            background: var(--violet);
-        }
-
-        .skills-grid .skill-card:nth-child(1) {
-            transition-delay: .05s;
-        }
-
-        .skills-grid .skill-card:nth-child(2) {
-            transition-delay: .1s;
-        }
-
-        .skills-grid .skill-card:nth-child(3) {
-            transition-delay: .15s;
-        }
-
-        .skills-grid .skill-card:nth-child(4) {
-            transition-delay: .2s;
-        }
+        .skill-card.c-blue { background: var(--blue); }
+        .skill-card.c-coral { background: var(--coral); }
+        .skill-card.c-teal { background: var(--teal); }
+        .skill-card.c-violet { background: var(--violet); }
 
         @media (max-width:760px) {
             .skills-grid {
@@ -639,30 +808,25 @@
         .projects {
             display: flex;
             flex-direction: column;
-            gap: 34px;
+            gap: 36px;
         }
 
         .project-card {
             display: block;
             border: 2px solid var(--ink);
             border-radius: 18px;
-            text-decoration: none;
             color: inherit;
             background: var(--paper);
             transition: box-shadow .18s ease;
         }
 
-        a.project-card:hover {
-            box-shadow: 0 14px 0 0 var(--ink);
-        }
-
-        a.project-card:hover .project-arrow {
-            transform: translate(3px,-3px);
+        .project-card:hover {
+            box-shadow: 0 12px 0 0 var(--ink);
         }
 
         .project-inner {
             display: grid;
-            grid-template-columns: 260px 1fr;
+            grid-template-columns: 270px 1fr;
             border-radius: 16px;
             overflow: hidden;
             width: 100%;
@@ -678,25 +842,55 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            min-height: 220px;
+            min-height: 240px;
             position: relative;
             overflow: hidden;
+            padding: 20px;
         }
 
         .project-visual img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .project-visual.p1 {
-            background: var(--blue);
+        .project-visual .lvl {
+            font-size: 12px;
+            background: rgba(20, 22, 43, 0.78);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
 
-        .project-visual.p2 {
-            background: var(--coral);
+        .project-visual .ph-label {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
         }
+
+        .project-visual .ph-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            opacity: 0.88;
+            margin-top: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-visual.p-cowboy { background: var(--coral); }
+        .project-visual.p-ue5 {
+            background: linear-gradient(135deg, #1E1B4B 0%, #3654FF 55%, #0D9488 100%);
+        }
+        .project-visual.p-tile { background: var(--blue); }
 
         .project-body {
             padding: 30px 34px;
@@ -710,46 +904,42 @@
             gap: 16px;
         }
 
+        .project-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .engine-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 6px;
+            background: var(--ink);
+            color: #fff;
+        }
+
         .project-body h3 {
             font-size: 25px;
         }
 
-        .project-arrow {
-            flex-shrink: 0;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--ink);
-            color: #fff;
-            transition: transform .18s ease;
-        }
-
-        .project-arrow svg {
-            width: 17px;
-            height: 17px;
-        }
-
         .project-hook {
-            margin-top: 5px;
+            margin-top: 6px;
             font-size: 14.5px;
             font-weight: 700;
         }
 
-        .project-body.p1 .project-hook {
-            color: var(--blue);
-        }
-
-        .project-body.p2 .project-hook {
-            color: var(--coral);
-        }
+        .project-body.p-cowboy .project-hook { color: var(--coral); }
+        .project-body.p-ue5 .project-hook { color: var(--violet); }
+        .project-body.p-tile .project-hook { color: var(--blue); }
 
         .project-body p.desc {
-            margin-top: 14px;
-            max-width: 62ch;
+            margin-top: 12px;
+            max-width: 64ch;
             color: var(--muted);
+            font-size: 16px;
         }
 
         .project-meta {
@@ -777,15 +967,112 @@
         .project-body ul.outcomes li {
             margin-bottom: 8px;
             line-height: 1.55;
+            font-size: 15.5px;
         }
 
-        @media (max-width:700px) {
+        /* Action Row & Expandable Design Breakdown Drawer */
+        .project-actions {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            padding: 9px 16px;
+            border-radius: 24px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform .15s ease, background .15s ease;
+        }
+
+        .btn-project.play {
+            background: var(--ink);
+            color: #fff;
+            border: 1.5px solid var(--ink);
+        }
+
+        .btn-project.play:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            transform: translateY(-1px);
+        }
+
+        .btn-project.breakdown-toggle {
+            background: var(--paper-alt);
+            color: var(--ink);
+            border: 1.5px solid var(--ink);
+        }
+
+        .btn-project.breakdown-toggle:hover {
+            background: #E4E6F7;
+        }
+
+        .btn-project svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .design-drawer {
+            display: none;
+            margin-top: 18px;
+            background: var(--paper-alt);
+            border: 1.5px solid var(--line);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+
+        .design-drawer.open {
+            display: block;
+            animation: rise .25s ease forwards;
+        }
+
+        .drawer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .drawer-box {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .drawer-box h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            color: var(--blue);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .drawer-box p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--ink);
+        }
+
+        @media (max-width:740px) {
             .project-inner {
                 grid-template-columns: 1fr;
             }
-
             .project-visual {
-                min-height: 180px;
+                min-height: 190px;
+            }
+            .drawer-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -810,7 +1097,7 @@
         }
 
         .edu-item .deg {
-            font-family: 'Sora',sans-serif;
+            font-family: 'Sora', sans-serif;
             font-weight: 700;
             font-size: 20px;
         }
@@ -822,7 +1109,7 @@
 
         .edu-item .yr {
             margin-left: auto;
-            font-family: 'JetBrains Mono',monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
             color: var(--blue);
             font-weight: 600;
@@ -836,45 +1123,61 @@
         }
 
         .contact h2 {
-            font-size: clamp(38px,6vw,62px);
-            max-width: 13ch;
+            font-size: clamp(38px, 6vw, 62px);
+            max-width: 14ch;
         }
 
         .contact .sub {
             margin-top: 16px;
-            max-width: 48ch;
+            max-width: 52ch;
             color: #B7B9D6;
             font-size: 17px;
         }
 
         .contact-links {
-            margin-top: 40px;
+            margin-top: 38px;
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             gap: 14px;
         }
 
-        .contact-links a {
+        .contact-links > a,
+        .contact-links .contact-btn {
+            font-family: 'Manrope', sans-serif;
             text-decoration: none;
             padding: 14px 24px;
             border-radius: 40px;
             font-weight: 700;
             font-size: 14.5px;
-            transition: transform .15s ease, opacity .15s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform .15s ease, opacity .15s ease, border-color .15s ease;
         }
 
-        .contact-links a.primary {
+        .contact-links > a.primary,
+        .contact-links .contact-btn.primary {
             background: var(--blue);
             color: #fff;
+            border: 2px solid var(--blue);
         }
 
-        .contact-links a.secondary {
+        .contact-links > a.secondary,
+        .contact-links .contact-btn.secondary {
             background: transparent;
             color: #fff;
             border: 2px solid #3A3D5C;
         }
 
-        .contact-links a:hover {
+        .contact-links > a.secondary:hover,
+        .contact-links .contact-btn.secondary:hover {
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .contact-links > a.primary:hover {
             transform: translateY(-2px);
         }
 
@@ -886,7 +1189,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
-            font-family: 'JetBrains Mono',monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             color: #8385A8;
         }
@@ -903,12 +1206,36 @@
         <div class="wrap">
             <a class="id" href="#top" id="logo"><span class="dot"></span>Akhil Sharma</a>
             <nav>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
+                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="#experience">Experience</a>
+                <a class="nav-link" href="#skills">Skills</a>
+                <a class="nav-link" href="#projects">Projects</a>
+                <a class="nav-link" href="#education">Education</a>
+                <a class="nav-link" href="#contact">Contact</a>
+
+                <!-- Navbar CV Selector Dropdown -->
+                <div class="cv-dropdown">
+                    <button type="button" class="nav-cta cv-trigger" aria-expanded="false">
+                        Resume / CV
+                        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="cv-menu align-right">
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon doc">DOC</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">View Live CV ↗</span>
+                                <span class="cv-menu-sub">Open in Google Docs</span>
+                            </span>
+                        </a>
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/export?format=pdf" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon pdf">PDF</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">Download PDF ↓</span>
+                                <span class="cv-menu-sub">Direct PDF file download</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -922,34 +1249,67 @@
         </svg>
         <div class="wrap">
             <div class="eyebrow-row">
-                <span class="chip">GAME DESIGNER</span>
-                <span class="role-line">Systems · Levels · Narrative</span>
+                <span class="chip">GAME &amp; SYSTEMS DESIGNER</span>
+                <span class="status-pill">Available for Internships &amp; Full-Time Roles</span>
+                <span class="role-line">3Cs · Combat &amp; Level Pacing · UE5 Blueprints &amp; Unity C#</span>
             </div>
             <h1>Akhil <span class="hl">Sharma</span></h1>
-            <p class="role">I design gameplay loops and systems that turn a concept into something players actually want to keep playing — built in Unreal Engine 5 and Unity, from first prototype to playable level.</p>
+            <p class="role">I design gameplay loops, combat encounters, and responsive 3Cs that turn a paper concept into something players actually feel — built and playtested in Unreal Engine 5 and Unity.</p>
+            <div class="hero-cta-row">
+                <a href="#projects" class="btn-hero primary">Explore Playable Projects ↓</a>
+
+                <!-- Hero CV Selector Dropdown -->
+                <div class="cv-dropdown">
+                    <button type="button" class="btn-hero secondary cv-trigger" aria-expanded="false">
+                        Resume / CV Options
+                        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="cv-menu">
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon doc">DOC</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">View Live CV ↗</span>
+                                <span class="cv-menu-sub">Open in Google Docs</span>
+                            </span>
+                        </a>
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/export?format=pdf" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon pdf">PDF</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">Download PDF ↓</span>
+                                <span class="cv-menu-sub">Save a copy directly</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="https://akiruk.itch.io/" target="_blank" rel="noopener noreferrer" class="btn-hero secondary">Play Builds on itch.io ↗</a>
+            </div>
             <div class="stat-row">
-                <div class="stat-chip c-blue"><span class="num">2</span><span class="lab">Engines — UE5 / Unity</span></div>
-                <div class="stat-chip c-coral"><span class="num">C#</span><span class="lab">+ Blueprints</span></div>
-                <div class="stat-chip c-teal"><span class="num">04</span><span class="lab">Design specialties</span></div>
-                <div class="stat-chip c-violet"><span class="num">HYD</span><span class="lab">Hyderabad, India</span></div>
+                <div class="stat-chip c-blue"><span class="num">02</span><span class="lab">Engines — UE5 &amp; Unity</span></div>
+                <div class="stat-chip c-coral"><span class="num">C#</span><span class="lab">+ UE5 Blueprints / UMG</span></div>
+                <div class="stat-chip c-teal"><span class="num">03</span><span class="lab">Featured Case Studies</span></div>
+                <div class="stat-chip c-violet"><span class="num">HYD</span><span class="lab">Hyderabad / Remote</span></div>
             </div>
         </div>
     </section>
 
     <section id="about">
         <div class="wrap">
-            <div class="section-head reveal"><span class="idx mono"><h2>About</h2></div>
+            <div class="section-head reveal">
+                <span class="idx mono">01 //</span>
+                <h2>About</h2>
+            </div>
             <div class="about-grid">
                 <div class="reveal">
-                    <p>I'm a game designer who likes taking a rough idea and figuring out exactly how it should feel to play — the loop, the pacing, the moment a mechanic clicks. My foundation is in level design, narrative integration, and rapid prototyping, and I move comfortably between Unreal Engine 5 and Unity depending on what a project needs.</p>
-                    <p>That foundation was sharpened through a selective apprenticeship at Kyodai Gameworks, where I worked through the full arc of idea creation and systems design under real production constraints. I'm looking to bring that thinking — structured, playtested, and player-first — to a collaborative game development team.</p>
+                    <p>I'm a hands-on game designer obsessed with the bridge between paper systems and controller feel — tuning the 3Cs (Character, Camera, Controls), mapping sightlines, and balancing risk/reward loops until a mechanic clicks. Rather than handing off static documents, I build and iterate directly inside <strong>Unreal Engine 5 (Blueprints / UMG)</strong> and <strong>Unity (C#)</strong>.</p>
+                    <p>That workflow was sharpened through a selective apprenticeship at <strong>Kyodai Gameworks</strong>, where I took gameplay concepts from initial premise through systems balancing and production constraints. Whether tuning coyote time down to the millisecond or structuring combat choke points, I bring structured, playtest-driven design to collaborative studio teams.</p>
                 </div>
                 <div class="about-side reveal">
-                    <h3>Currently</h3>
+                    <h3>CURRENT STATUS // OCT 2026</h3>
                     <ul>
-                        <li>Based in Hyderabad, Telangana</li>
-                        <li>M.Sc. Game Technology, in progress</li>
-                        <li>Open to Game Designer / Level Designer roles</li>
+                        <li>📍 Based in Hyderabad, Telangana (Open to Onsite, Hybrid &amp; Remote)</li>
+                        <li>🎓 M.Sc. Game Technology — Backstage Pass Institute</li>
+                        <li>🎯 Target Roles: Game Designer, Technical / Systems Designer, Level Designer</li>
                     </ul>
                 </div>
             </div>
@@ -958,18 +1318,21 @@
 
     <section class="alt" id="experience">
         <div class="wrap">
-            <div class="section-head reveal"><span class="idx mono"><h2>Experience</h2></div>
+            <div class="section-head reveal">
+                <span class="idx mono">02 //</span>
+                <h2>Experience</h2>
+            </div>
             <div class="timeline">
                 <div class="tl-item reveal">
                     <div class="tl-head">
-                        <h3>Game Designer</h3>
+                        <h3>Game Designer (Apprentice)</h3>
                         <span class="org">Kyodai Gameworks</span>
                         <span class="dates">FEB 2026 — MAY 2026</span>
                     </div>
                     <ul>
-                        <li>Selected for the studio's Accelerator Program, a selective apprenticeship for early-career designers.</li>
-                        <li>Owned idea creation for new gameplay concepts, taking prompts from a loose premise to a testable design.</li>
-                        <li>Contributed to systems design — defining the rules, feedback loops, and balancing levers that hold a mechanic together.</li>
+                        <li><strong>Selective Studio Accelerator:</strong> Chosen for an intensive production apprenticeship focused on early-career systems and gameplay architecture.</li>
+                        <li><strong>Concept-to-Prototype Pipeline:</strong> Owned rapid ideation and mechanic scoping, translating high-level creative briefs into structured, testable design loops and Miro system flowcharts.</li>
+                        <li><strong>Systems &amp; Economy Levers:</strong> Defined core rules, player feedback loops, and progression balancing parameters designed to prevent dominant strategies and sustain engagement.</li>
                     </ul>
                 </div>
             </div>
@@ -978,23 +1341,46 @@
 
     <section id="skills">
         <div class="wrap">
-            <div class="section-head reveal"><span class="idx mono"><h2>Skills</h2></div>
+            <div class="section-head reveal">
+                <span class="idx mono">03 //</span>
+                <h2>Technical &amp; Design Stack</h2>
+            </div>
             <div class="skills-grid">
                 <div class="skill-card c-blue reveal">
-                    <h3>ENGINES</h3>
-                    <ul><li>Unity</li><li>Unreal Engine 5</li></ul>
+                    <h3>ENGINES &amp; TECH</h3>
+                    <ul>
+                        <li>Unreal Engine 5</li>
+                        <li>Unity (2D &amp; 3D)</li>
+                        <li>UMG Widget Blueprints</li>
+                        <li>Cinemachine &amp; Input Sys</li>
+                    </ul>
                 </div>
                 <div class="skill-card c-coral reveal">
-                    <h3>SCRIPTING</h3>
-                    <ul><li>C#</li><li>Blueprints</li></ul>
+                    <h3>SCRIPTING &amp; LOGIC</h3>
+                    <ul>
+                        <li>UE5 Blueprints</li>
+                        <li>C# (Gameplay &amp; AI)</li>
+                        <li>C++ / Shader Basics</li>
+                        <li>State Machines</li>
+                    </ul>
                 </div>
                 <div class="skill-card c-teal reveal">
                     <h3>DESIGN TOOLS</h3>
-                    <ul><li>Miro</li><li>Adobe Creative Suite</li></ul>
+                    <ul>
+                        <li>Miro (System Flows)</li>
+                        <li>Gray-Boxing / Blockmesh</li>
+                        <li>Telemetry &amp; Balancing</li>
+                        <li>Adobe Creative Suite</li>
+                    </ul>
                 </div>
                 <div class="skill-card c-violet reveal">
-                    <h3>SPECIALTIES</h3>
-                    <ul><li>Idea Conceptualization</li><li>Systems Design</li><li>Level Design</li><li>Narrative Branching</li></ul>
+                    <h3>CORE SPECIALTIES</h3>
+                    <ul>
+                        <li>3Cs &amp; Movement Feel</li>
+                        <li>Systems &amp; Loop Design</li>
+                        <li>Combat &amp; Level Pacing</li>
+                        <li>Risk/Reward Routing</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1002,77 +1388,190 @@
 
     <section class="alt" id="projects">
         <div class="wrap">
-            <div class="section-head reveal"><span class="idx mono"><h2>Projects</h2></div>
-            <p class="lede reveal">Featured playable game projects showcasing level layout, system feedback, and core mechanics design.</p>
+            <div class="section-head reveal">
+                <span class="idx mono">04 //</span>
+                <h2>Featured Projects &amp; Case Studies</h2>
+            </div>
+            <p class="lede reveal">Playable vertical slices and technical design studies demonstrating combat encounter architecture, UE5/Unity scripting, and iterative playtest balancing.</p>
             <div class="projects">
 
-                <!-- Project 1: Tilevania -->
-                <a class="project-card reveal" href="https://akiruk.itch.io/tilevania" target="_blank" rel="noopener noreferrer">
+                <!-- Project 1: The Cowboy -->
+                <article class="project-card reveal">
                     <div class="project-inner">
-                        <div class="project-visual p1">
-                            <img src="tilevania.png" alt="Tilevania Cover Art" onerror="this.parentElement.innerHTML='<span class=\'lvl mono\'>LVL.01</span><span class=\'ph-label\'>Tilevania<br>Pixel Platformer</span>'">
+                        <div class="project-visual p-cowboy">
+                            <img src="the cowboy.png" alt="The Cowboy Cover Art" onerror="this.style.display='none'">
+                            <span class="lvl mono">CASE STUDY 01 // 3D COMBAT</span>
+                            <span class="ph-label">The Cowboy<br>Tactical Shooter</span>
                         </div>
-                        <div class="project-body p1">
+                        <div class="project-body p-cowboy">
                             <div class="project-body-top">
                                 <div>
-                                    <h3>Tilevania</h3>
-                                    <div class="project-hook">Modular 2D tilemap platformer featuring Rule Tiles, Cinemachine camera confining, and persistent game state architecture</div>
-                                </div>
-                                <span class="project-arrow" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
-                                </span>
-                            </div>
-                            <p class="desc">A classic 2D action platformer built with Unity's Tilemap ecosystem and the New Input System. Engineered multi-tiered terrain using Composite Colliders and Rule Tiles, layered state machine animations for running, jumping, and ladder climbing, and implemented seamless level streaming through persistent session singletons.</p>
-                            <div class="project-meta">
-                                <span class="tagpill">Unity 2D</span>
-                                <span class="tagpill">C#</span>
-                                <span class="tagpill">Level Design</span>
-                                <span class="tagpill">Movement Tuning</span>
-                                <span class="tagpill">Spatial Readability</span>
-                            </div>
-                            <ul class="outcomes">
-                                <li><strong>Micro-Pacing &amp; Jump Precision:</strong> Fine-tuned coyote time, jump buffering, and gravity scale on the Rigidbody2D to eliminate floatiness and deliver responsive, skill-testing traversal.</li>
-                                <li><strong>Hazard Rhythm &amp; Readability:</strong> Arranged spike traps, moving hazards, and enemy patrols with clear visual contrast and rhythmic spacing, allowing players to read hazard cadences before stacking obstacles.</li>
-                                <li><strong>Risk/Reward Routing:</strong> Placed high-value coin clusters along dangerous platform edges and slime patrol routes, forcing real-time decisions between speedrun pathing and completionist scores.</li>
-                                <li><strong>Session Continuity:</strong> Architected persistent session managers to retain life tallies and pickup state across level portals without disrupting platforming flow.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 2: The Cowboy -->
-                <a class="project-card reveal" href="https://akiruk.itch.io/the-cowboy" target="_blank" rel="noopener noreferrer">
-                    <div class="project-inner">
-                        <div class="project-visual p2">
-                            <img src="the cowboy.png" alt="The Cowboy Cover Art" onerror="this.parentElement.innerHTML='<span class=\'lvl mono\'>LVL.02</span><span class=\'ph-label\'>The Cowboy<br>Top-Down Shooter</span>'">
-                        </div>
-                        <div class="project-body p2">
-                            <div class="project-body-top">
-                                <div>
+                                    <div class="project-badge-row">
+                                        <span class="engine-badge">UNITY 3D · C#</span>
+                                    </div>
                                     <h3>The Cowboy</h3>
-                                    <div class="project-hook">Tactical 3D top-down shooter built on Unity's New Input System, featuring dynamic enemy AI and objective extraction</div>
+                                    <div class="project-hook">Tactical 3D top-down shooter featuring mixed-threat squad AI, vehicular sandbox mechanics, and timed extraction pressure</div>
                                 </div>
-                                <span class="project-arrow" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
-                                </span>
                             </div>
-                            <p class="desc">A fast-paced 3D top-down shooter designed around high-stakes combat and dynamic sandbox encounters. Built using modern C# architecture in Unity, players must out-maneuver tactical AI squads, utilize drivable vehicles, and complete time-critical evacuation objectives across low-poly desert canyons.</p>
+                            <p class="desc">A fast-paced 3D top-down shooter built around high-stakes combat and dynamic sandbox encounters. Engineered in Unity using modern C# architecture, players must out-maneuver coordinated AI archetypes, weaponize drivable vehicles, and complete time-critical evacuation objectives across desert canyon bottlenecks.</p>
                             <div class="project-meta">
-                                <span class="tagpill">Unity 3D</span>
-                                <span class="tagpill">C#</span>
-                                <span class="tagpill">Systems Design</span>
-                                <span class="tagpill">Combat Pacing</span>
                                 <span class="tagpill">Encounter Design</span>
+                                <span class="tagpill">Sightline Architecture</span>
+                                <span class="tagpill">AI Squad Composition</span>
+                                <span class="tagpill">Resource Economy</span>
+                                <span class="tagpill">Unity New Input System</span>
                             </div>
                             <ul class="outcomes">
-                                <li><strong>Choke Point &amp; Sightline Architecture:</strong> Structured canyon bottlenecks and placed vehicle wrecks to establish dynamic line-of-sight breaks and intentional cover-to-cover combat routes.</li>
-                                <li><strong>Pacing &amp; Resource Pressure:</strong> Coupled a strict evacuation countdown clock with finite ammunition limits, compelling players to balance defensive cover tactics with aggressive forward movement.</li>
-                                <li><strong>Dynamic Encounter Compositions:</strong> Designed mixed-threat enemy squads combining close-range rushers with cover-seeking riflemen to break static camping and force constant repositioning.</li>
-                                <li><strong>Interactive Sandbox Elements:</strong> Integrated drivable vehicles as both rapid traversal tools and mobile cover/battering rams to give players multiple tactical avenues through enemy barricades.</li>
+                                <li><strong>Choke Point &amp; Sightline Architecture:</strong> Structured canyon bottlenecks and angled vehicle wrecks to create intentional line-of-sight breaks and cover-to-cover flanking routes.</li>
+                                <li><strong>Pacing &amp; Resource Pressure:</strong> Coupled a strict evacuation countdown timer with finite ammo drops, forcing players to trade safe defensive play for aggressive forward pushes.</li>
+                                <li><strong>Dynamic Encounter Compositions:</strong> Combined close-range melee rushers with cover-seeking riflemen to punish static corner-camping and demand constant spatial repositioning.</li>
+                                <li><strong>Vehicular Sandbox Utility:</strong> Integrated drivable vehicles as dual-purpose traversal tools and mobile cover/battering rams to breach heavily fortified extraction zones.</li>
                             </ul>
+
+                            <div class="project-actions">
+                                <a class="btn-project play" href="https://akiruk.itch.io/the-cowboy" target="_blank" rel="noopener noreferrer">
+                                    Play Build on itch.io
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </a>
+                                <button class="btn-project breakdown-toggle" type="button" aria-expanded="false">
+                                    <span>+ View Playtest &amp; System Breakdown</span>
+                                </button>
+                            </div>
+
+                            <div class="design-drawer">
+                                <div class="drawer-grid">
+                                    <div class="drawer-box">
+                                        <h4>Playtest Finding &amp; Iteration</h4>
+                                        <p><strong>Problem:</strong> Early playtesters camped behind the initial canyon entry rocks and picked off AI one-by-one.<br><strong>Design Fix:</strong> Introduced Aggressive Rusher AI flankers, tightened ammo drops on passive kills, and tuned the extraction clock to reward forward momentum.</p>
+                                    </div>
+                                    <div class="drawer-box">
+                                        <h4>Key Balancing Levers (C#)</h4>
+                                        <p>Exposed modular inspector variables for <code>EvacTimerDuration</code>, <code>AI_DetectionRadius</code>, <code>RusherFlankSpeed</code>, and <code>VehicleRamDamageMultiplier</code> for rapid encounter tuning.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
+                </article>
+
+                <!-- Project 2: Street Dash: Hyperdelivery -->
+                <article class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-visual p-ue5">
+                            <img src="street-dash.png" alt="Street Dash Hyperdelivery Concept & Prototype" onerror="this.style.display='none'">
+                            <span class="lvl mono">CASE STUDY 02 // UE5 &amp; SYSTEMS</span>
+                            <span class="ph-label">Street Dash:<br>Hyperdelivery</span>
+                            <span class="ph-sub">UE5 Blueprints · UMG · Route Loop</span>
+                        </div>
+                        <div class="project-body p-ue5">
+                            <div class="project-body-top">
+                                <div>
+                                    <div class="project-badge-row">
+                                        <span class="engine-badge">UNREAL ENGINE 5 · BLUEPRINTS &amp; UMG</span>
+                                    </div>
+                                    <h3>Street Dash: Hyperdelivery</h3>
+                                    <div class="project-hook">High-velocity arcade delivery systems design &amp; UE5 prototype featuring risk/reward route optimization, combo multipliers, and telemetry HUD</div>
+                                </div>
+                            </div>
+                            <p class="desc">An arcade action-delivery concept and technical systems prototype built around high-speed urban navigation and split-second route optimization. Designed to test how spatial risk, momentum conservation, and dynamic delivery timers create an addictive "one-more-run" score-chasing core loop in Unreal Engine 5.</p>
+                            <div class="project-meta">
+                                <span class="tagpill">UE5 Blueprints</span>
+                                <span class="tagpill">UMG Widget UI</span>
+                                <span class="tagpill">Core Loop &amp; Economy</span>
+                                <span class="tagpill">Route Optimization</span>
+                                <span class="tagpill">3Cs &amp; Arcade Feel</span>
+                            </div>
+                            <ul class="outcomes">
+                                <li><strong>Multi-Tiered Route Architecture:</strong> Designed intersecting level lanes (Safe Main Roads vs. High-Risk Alley Shortcuts) that test player map mastery and momentum control under decaying delivery clocks.</li>
+                                <li><strong>Momentum &amp; Combo Systems:</strong> Engineered a flow-state scoring loop where chaining near-misses, drift turns, and on-time drop-offs scales a dynamic payout multiplier while cargo damage resets streaks.</li>
+                                <li><strong>Real-Time UMG Telemetry &amp; Feedback:</strong> Structured non-intrusive UMG HUD widgets and directional objective indicators so players can read timer states and route branches at high speeds without eye-strain.</li>
+                                <li><strong>Dynamic Difficulty &amp; Pinch-Point Balancing:</strong> Modeled escalation curves across shift waves by scaling traffic density, fragile-package modifiers, and multi-stop prioritization puzzles.</li>
+                            </ul>
+
+                            <div class="project-actions">
+                                <a class="btn-project play" href="#contact">
+                                    Request GDD &amp; Blueprint Walkthrough
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </a>
+                                <button class="btn-project breakdown-toggle" type="button" aria-expanded="false">
+                                    <span>+ View Core Loop &amp; Telemetry Spec</span>
+                                </button>
+                            </div>
+
+                            <div class="design-drawer">
+                                <div class="drawer-grid">
+                                    <div class="drawer-box">
+                                        <h4>Core Loop Architecture</h4>
+                                        <p><strong>Accept Dispatch → Select Route Risk (Safe vs. Shortcut) → Maintain Speed/Combo Multiplier → Execute Drop-off → Invest Payout in Handling/Cargo Upgrades.</strong></p>
+                                    </div>
+                                    <div class="drawer-box">
+                                        <h4>UE5 Technical Implementation</h4>
+                                        <p>Built modular Blueprint splines for route checkpoints, dynamic UMG widget animations bound to timer decay events, and physical camera FOV scaling tied to player velocity.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Tilevania -->
+                <article class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-visual p-tile">
+                            <img src="tilevania.png" alt="Tilevania 2D Movement & Level Design Study" onerror="this.style.display='none'">
+                            <span class="lvl mono">CASE STUDY 03 // 3Cs &amp; PACING</span>
+                            <span class="ph-label">Tilevania<br>3Cs &amp; Level Study</span>
+                        </div>
+                        <div class="project-body p-tile">
+                            <div class="project-body-top">
+                                <div>
+                                    <div class="project-badge-row">
+                                        <span class="engine-badge">UNITY 2D · C# · 3Cs TUNING</span>
+                                    </div>
+                                    <h3>Tilevania — 2D Movement &amp; Level Pacing Study</h3>
+                                    <div class="project-hook">Modular 2D platformer focused on sub-frame jump responsiveness (coyote time / input buffering), sightline readability, and risk/reward routing</div>
+                                </div>
+                            </div>
+                            <p class="desc">A technical level design and 3Cs movement feel study built with Unity's Tilemap ecosystem and the New Input System. Engineered multi-tiered traversal rooms using Composite Colliders and Rule Tiles, custom-tuned physics curves for crisp platforming, and persistent singleton state managers across level portals.</p>
+                            <div class="project-meta">
+                                <span class="tagpill">3Cs Movement Feel</span>
+                                <span class="tagpill">Coyote Time &amp; Buffering</span>
+                                <span class="tagpill">Hazard Cadence</span>
+                                <span class="tagpill">Spatial Readability</span>
+                                <span class="tagpill">Cinemachine Confiners</span>
+                            </div>
+                            <ul class="outcomes">
+                                <li><strong>Micro-Pacing &amp; Jump Precision:</strong> Fine-tuned coyote time, jump input buffering, and custom gravity multipliers on the Rigidbody2D to eliminate floatiness and deliver responsive, skill-testing traversal.</li>
+                                <li><strong>Hazard Rhythm &amp; Readability:</strong> Arranged spike traps, moving hazards, and enemy patrols using strict visual contrast and rhythmic spacing—teaching mechanics safely before stacking difficulty.</li>
+                                <li><strong>Risk/Reward Coin Routing:</strong> Placed optional high-value coin clusters along tight platform edges and enemy patrol loops, creating micro-decisions between safe completion and speedrun mastery.</li>
+                                <li><strong>Session Continuity Architecture:</strong> Scripted persistent session singletons in C# to retain life tallies, score states, and item pickups seamlessly across scene transitions.</li>
+                            </ul>
+
+                            <div class="project-actions">
+                                <a class="btn-project play" href="https://akiruk.itch.io/tilevania" target="_blank" rel="noopener noreferrer">
+                                    Play Build on itch.io
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </a>
+                                <button class="btn-project breakdown-toggle" type="button" aria-expanded="false">
+                                    <span>+ View 3Cs Physics &amp; Playtest Notes</span>
+                                </button>
+                            </div>
+
+                            <div class="design-drawer">
+                                <div class="drawer-grid">
+                                    <div class="drawer-box">
+                                        <h4>Playtest Finding &amp; Iteration</h4>
+                                        <p><strong>Problem:</strong> Players frequently missed ledge jumps by 2–3 frames on descending platforms and blamed input lag.<br><strong>Design Fix:</strong> Added a <code>0.12s</code> coyote-time grace window, <code>0.15s</code> jump input buffer, and increased fall gravity scale to make landings snappy and predictable.</p>
+                                    </div>
+                                    <div class="drawer-box">
+                                        <h4>Level Pacing Framework</h4>
+                                        <p>Structured each stage around the 4-step Kishōtenketsu cadence: <strong>Introduce mechanic in safe zone → Develop with movement → Twist by combining enemy patrol + spikes → Conclude at portal checkpoint.</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </div>
@@ -1080,12 +1579,15 @@
 
     <section id="education">
         <div class="wrap">
-            <div class="section-head reveal"><span class="idx mono"><h2>Education</h2></div>
+            <div class="section-head reveal">
+                <span class="idx mono">05 //</span>
+                <h2>Education</h2>
+            </div>
             <div class="edu-list">
                 <div class="edu-item reveal" style="transition-delay:.05s">
                     <span class="deg">M.Sc. Game Technology</span>
-                    <span class="inst">Backstage Pass Institute, Hyderabad, Telangana</span>
-                    <span class="yr">2027</span>
+                    <span class="inst">Backstage Pass Institute of Gaming &amp; Technology, Hyderabad</span>
+                    <span class="yr">2027 (In Progress)</span>
                 </div>
                 <div class="edu-item reveal" style="transition-delay:.1s">
                     <span class="deg">B.Sc. Graphic &amp; Animation</span>
@@ -1099,15 +1601,41 @@
     <section class="contact" id="contact">
         <div class="wrap">
             <h2 class="reveal">Let's design something worth playing.</h2>
-            <p class="sub reveal">Open to Game Designer roles — happy to walk through a design decision, a system, or a prototype in more detail.</p>
+            <p class="sub reveal">Actively seeking Game Designer, Technical Designer, and Level Designer internships or fresher roles (Onsite/Hybrid in Hyderabad or Remote). Happy to walk through any prototype, Blueprint graph, or design teardown live.</p>
             <div class="contact-links reveal">
-                <a class="primary" href="mailto:akhil.work.private@gmail.com">Email me</a>
+                <a class="primary" href="mailto:akhil.work.private@gmail.com">Email: akhil.work.private@gmail.com</a>
+
+                <!-- Footer CV Selector Dropdown (Opens upward cleanly) -->
+                <div class="cv-dropdown">
+                    <button type="button" class="contact-btn secondary cv-trigger" aria-expanded="false">
+                        Resume / CV (View or PDF)
+                        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="cv-menu drop-up">
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon doc">DOC</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">View Live CV ↗</span>
+                                <span class="cv-menu-sub">Open in Google Docs</span>
+                            </span>
+                        </a>
+                        <a class="cv-menu-item" href="https://docs.google.com/document/d/1tXYBe3ZdiWR7_9TN58pYnQ8D3Fqto_7SkOU1lyE-pJc/export?format=pdf" target="_blank" rel="noopener noreferrer">
+                            <span class="cv-menu-icon pdf">PDF</span>
+                            <span class="cv-menu-text">
+                                <span class="cv-menu-title">Download PDF ↓</span>
+                                <span class="cv-menu-sub">Save a copy directly</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
                 <a class="secondary" href="tel:+917206621625">+91 72066 21625</a>
-                <a class="secondary" href="#top">Hyderabad, Telangana</a>
+                <a class="secondary" href="https://akiruk.itch.io/" target="_blank" rel="noopener noreferrer">itch.io Builds ↗</a>
+                <a class="secondary" href="https://github.com/akhilsharma-game" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             </div>
             <div class="foot-note">
-                <span>AKHIL SHARMA — GAME DESIGNER</span>
-                <span>BUILT ON UE5 / UNITY, DESIGNED ON PAPER FIRST</span>
+                <span>AKHIL SHARMA — GAME &amp; SYSTEMS DESIGNER (HYDERABAD, INDIA)</span>
+                <span>PROTOTYPED IN UE5 &amp; UNITY · TUNED THROUGH PLAYTESTING</span>
             </div>
         </div>
     </section>
@@ -1147,6 +1675,59 @@
             document.addEventListener('scroll', toggleBackToTop, { passive: true });
             backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+            // CV Dropdown Toggle (View Google Doc vs. Direct PDF Download)
+            const cvDropdowns = document.querySelectorAll('.cv-dropdown');
+            cvDropdowns.forEach(drop => {
+                const trigger = drop.querySelector('.cv-trigger');
+                if (!trigger) return;
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isAlreadyOpen = drop.classList.contains('open');
+                    cvDropdowns.forEach(d => {
+                        d.classList.remove('open');
+                        const t = d.querySelector('.cv-trigger');
+                        if (t) t.setAttribute('aria-expanded', 'false');
+                    });
+                    if (!isAlreadyOpen) {
+                        drop.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // Close CV dropdown when clicking outside or pressing Escape
+            document.addEventListener('click', () => {
+                cvDropdowns.forEach(d => {
+                    d.classList.remove('open');
+                    const t = d.querySelector('.cv-trigger');
+                    if (t) t.setAttribute('aria-expanded', 'false');
+                });
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    cvDropdowns.forEach(d => {
+                        d.classList.remove('open');
+                        const t = d.querySelector('.cv-trigger');
+                        if (t) t.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+
+            // Interactive Design Breakdown Drawers
+            document.querySelectorAll('.breakdown-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cardBody = btn.closest('.project-body');
+                    const drawer = cardBody.querySelector('.design-drawer');
+                    if (!drawer) return;
+                    const isOpen = drawer.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(isOpen));
+                    const span = btn.querySelector('span');
+                    if (span) {
+                        span.textContent = isOpen ? '− Hide Playtest & System Breakdown' : '+ View Playtest & System Breakdown';
+                    }
+                });
+            });
+
             // Reveal on scroll
             const revealEls = document.querySelectorAll('.reveal');
             if('IntersectionObserver' in window){
@@ -1157,17 +1738,17 @@
                             revealObserver.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.15 });
+                }, { threshold: 0.12 });
                 revealEls.forEach(el => revealObserver.observe(el));
 
                 // Active nav link tracking
-                const navLinks = document.querySelectorAll('.site-nav nav a');
+                const navLinks = document.querySelectorAll('.site-nav nav a.nav-link');
                 const sections = document.querySelectorAll('section[id]');
                 const navObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if(!entry.isIntersecting) return;
                         const id = entry.target.getAttribute('id');
-                        const link = document.querySelector('.site-nav nav a[href="#' + id + '"]');
+                        const link = document.querySelector('.site-nav nav a.nav-link[href="#' + id + '"]');
                         if(!link) return;
                         navLinks.forEach(l => l.classList.remove('active'));
                         link.classList.add('active');
@@ -1195,7 +1776,7 @@
                 requestAnimationFrame(step);
             });
 
-            // Tilt effect on cards
+            // Subtle Tilt effect on skill cards and stat chips
             function addTilt(card, targetEl, maxDeg, liftPx, scale){
                 targetEl.style.transition = 'transform .15s ease';
                 card.addEventListener('mousemove', (e) => {
@@ -1208,12 +1789,6 @@
                 });
                 card.addEventListener('mouseleave', () => { targetEl.style.transform = ''; });
             }
-
-            // Apply tilt exclusively to .project-inner so the hard shadow remains pinned
-            document.querySelectorAll('.project-card').forEach(card => {
-                const inner = card.querySelector('.project-inner');
-                if (inner) addTilt(card, inner, 3, 4, 1.01);
-            });
 
             document.querySelectorAll('.skill-card').forEach(el => addTilt(el, el, 5, 3, 1.03));
             document.querySelectorAll('.stat-chip').forEach(el => addTilt(el, el, 6, 2, 1.04));
